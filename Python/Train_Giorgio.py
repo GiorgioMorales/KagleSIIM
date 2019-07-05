@@ -73,17 +73,13 @@ validation_generator = DataGenerator(data_dict['validation'], **params)
 #
 # with open('Generators/Validation', 'wb') as f:
 #     pickle.dump(validation_generator, f)
-#
-# with open('Generators/Test', 'wb') as f:
-#     pickle.dump(test_generator, f)
+
 
 # Si los generadores ya han sido creados con anterioridad, sólo se cargan
 # with open('Generators/Train', 'rb') as f:
 #     training_generator = pickle.load(f)
 # with open('Generators/Validation', 'rb') as f:
 #     validation_generator = pickle.load(f)
-# with open('Generators/Test', 'rb') as f:
-#     test_generator = pickle.load(f)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -93,6 +89,11 @@ Entrenamiento
 # Carga modelo
 model = compiled_model('build_generator1',loss = 'focal_loss')
 
+# checkpoint
+filepath="weights-train1-{epoch:02d}-{val_acc:.4f}.h5"
+checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
+callbacks_list = [checkpoint]
+
 # Train model
 print("Empieza entrenamiento...")
 history = model.fit_generator(generator=training_generator,
@@ -100,4 +101,4 @@ history = model.fit_generator(generator=training_generator,
                               use_multiprocessing=False,
                               shuffle=True,
                               epochs=100,
-                              )
+                              callbacks=callbacks_list)
