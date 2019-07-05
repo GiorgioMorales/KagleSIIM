@@ -84,7 +84,7 @@ class DataGenerator(keras.utils.Sequence):
             img2 = np.reshape((clahe.apply(img)).astype(np.uint8), (self.dim, self.dim, 1))
 
             # Lee máscara
-            mask = np.flip(np.rot90(cv2.imread(addrm, 0), 3), 1)
+            mask = imread(addrm, 0)
             mask2 = np.reshape((mask / 255), (self.dim, self.dim, 1))
 
             # Añade variación aleatoria de color a cada canal
