@@ -17,7 +17,7 @@ Custom functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-def focal_loss(y_true, y_pred, gamma=2., alpha=.25):
+def focal_loss(y_true, y_pred, gamma=2., alpha=.75):
 
     pt_1 = tf.where(tf.equal(y_true, 1), y_pred, tf.ones_like(y_pred))
     pt_0 = tf.where(tf.equal(y_true, 0), y_pred, tf.zeros_like(y_pred))
@@ -27,7 +27,21 @@ def focal_loss(y_true, y_pred, gamma=2., alpha=.25):
     pt_1 = K.clip(pt_1, epsilon, 1. - epsilon)
     pt_0 = K.clip(pt_0, epsilon, 1. - epsilon)
 
-    return -K.sum(alpha * K.pow(1. - pt_1, gamma) * K.log(pt_1)) - K.sum((1-alpha) * K.pow( pt_0, gamma) * K.log(1. - pt_0))
+    return -K.sum(alpha * K.pow(1. - pt_1, gamma) * K.log(pt_1)) - K.sum((1-alpha) * K.pow(pt_0, gamma) * K.log(1. - pt_0))
+
+
+def dice_coef(y_true, y_pred, smooth=1):
+    """
+    Dice = (2*|X & Y|)/ (|X|+ |Y|)
+         =  2*sum(|A*B|)/(sum(A^2)+sum(B^2))
+    ref: https://arxiv.org/pdf/1606.04797v1.pdf
+    """
+    intersection = K.sum(K.abs(y_true * y_pred), axis=-1)
+    return (2. * intersection + smooth) / (K.sum(K.square(y_true),-1) + K.sum(K.square(y_pred),-1) + smooth)
+
+
+def dice_coef_loss(y_true, y_pred):
+    return 1-dice_coef(y_true, y_pred)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -96,7 +110,7 @@ def build_generator1(img_shape=(1024, 1024, 1)):
     x = BatchNormalization(epsilon=1e-3, momentum=0.999, name='Conv_BN')(x)
     x = Activation(relu6, name='Conv_Relu6')(x)
 
-    x = _inverted_res_block(x, pointwise_filters=16, stride=1,
+    x = _inverted_res_block(x, pointwise_filters=16, stride=2,
                             expansion=1, block_id=0, skip_connection=False)
 
     skip1 = x
@@ -170,7 +184,7 @@ def build_generator1(img_shape=(1024, 1024, 1)):
                         dilation_rate=1, name='decoder_conv1')(x)
 
     x = Conv2D(1, (1, 1), padding='same', name="last_layer", activation='sigmoid')(x)
-    x = UpSampling2D(size=2)(x)
+    x = UpSampling2D(size=4)(x)
 
     return Model(d0, x)
 
@@ -189,6 +203,6 @@ def compiled_model (modelname = 'build_generator1', dim =1024, n_channels = 1, l
 
     # Compila modelol
     optimizer = Adam(lr=lr, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
-    model.compile(optimizer=optimizer, loss=loss, metrics=['acc'])
+    model.compile(optimizer=optimizer, loss=loss, metrics=['acc', dice_coef_loss])
 
     return model

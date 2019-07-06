@@ -13,7 +13,7 @@ import os
 class DataGenerator(keras.utils.Sequence):
     'Inicializa variables'
 
-    def __init__(self, list_IDs, batch_size=64, dim=512, n_channels=3, path='', maskpath='',
+    def __init__(self, list_IDs, batch_size=1, dim=512, n_channels=3, path='', maskpath='',
                  shuffle=True):
         'Initialization'
         self.dim = dim
@@ -80,8 +80,9 @@ class DataGenerator(keras.utils.Sequence):
             ds = pydicom.read_file(addr)
             img = ds.pixel_array
             # Añade CLAHE (Contrast Limited Adaptive Histogram Equalization)
-            clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(16, 16))
-            img2 = np.reshape((clahe.apply(img)).astype(np.uint8), (self.dim, self.dim, 1))
+            #clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(16, 16))
+            #img2 = np.reshape((clahe.apply(img)).astype(np.uint8), (self.dim, self.dim, 1))
+            img2 = np.reshape(img.astype(np.uint8), (self.dim, self.dim, 1))
 
             # Lee máscara
             mask = np.flip(np.rot90(cv2.imread(addrm, 0), 3), 1)
@@ -89,9 +90,12 @@ class DataGenerator(keras.utils.Sequence):
 
             # Añade variación aleatoria de color a cada canal
             img2, mask2 = self.randomflip(img2, mask2)
-            img2, mask2 = self.randomzoom(img2, mask2, 20)
+            img2, mask2 = self.randomzoom(img2, mask2, 5)
 
-            #cv2.imwrite(addr[0:-4] + "_mod.png", img2)
+            basepath = os.getcwd()[:-7]
+            print(np.max(img2))
+            cv2.imwrite(basepath + '//Pruebas//' + os.path.basename(addr)[:-4] + "_orig.png", img2)
+            cv2.imwrite(basepath + '//Pruebas//' + os.path.basename(addr)[:-4] + "_mask.png", mask2*255)
 
             # Guarda muestra
             X[i,] = np.reshape(img2, (self.dim, self.dim, 1))

@@ -10,7 +10,7 @@ Entrenamiento de segmentación de aguajes con Deeplab3+G atrous Depthwise separa
 from random import shuffle
 import glob
 import os
-from keras.optimizers import Adam
+from keras.callbacks import ModelCheckpoint
 
 from models_Giorgio import compiled_model
 
@@ -52,7 +52,7 @@ maskpath = basepath + '//Masks'
 n_channels = 1
 dim = 1024
 params = {'dim': dim,
-          'batch_size': 12,
+          'batch_size': 1,
           'n_channels': n_channels,
           'path': path,
           'maskpath': maskpath,
@@ -87,10 +87,10 @@ Entrenamiento
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 # Carga modelo
-model = compiled_model('build_generator1',loss = 'focal_loss')
+model = compiled_model('build_generator1', loss='focal_loss')
 
 # checkpoint
-filepath="weights-train1-{epoch:02d}-{val_acc:.4f}.h5"
+filepath = "weights-train1-{epoch:02d}-{val_acc:.4f}.h5"
 checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 callbacks_list = [checkpoint]
 

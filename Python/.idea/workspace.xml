@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53e77e59-6b94-46c1-a1f2-7505cfaa2b0f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Test_individual_images.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Kagle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Kagle.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Train_Giorgio.py" beforeDir="false" afterPath="$PROJECT_DIR$/Train_Giorgio.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models_Giorgio.py" beforeDir="false" afterPath="$PROJECT_DIR$/models_Giorgio.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +25,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ReadDICOM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="48" column="80" selection-start-line="48" selection-end-line="48" selection-end-column="80" />
+            <state relative-caret-position="238">
+              <caret line="14" column="82" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="82" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -29,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dataGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1377">
-              <caret line="86" column="52" selection-start-line="86" selection-start-column="52" selection-end-line="86" selection-end-column="52" />
+            <state relative-caret-position="213">
+              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
               <folding>
                 <element signature="e#59#77#0" expanded="true" />
               </folding>
@@ -44,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="64" column="26" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
+            <state relative-caret-position="206">
+              <caret line="205" column="80" selection-start-line="205" selection-start-column="80" selection-end-line="205" selection-end-column="80" />
               <folding>
                 <element signature="e#1#53#0" expanded="true" />
               </folding>
@@ -53,11 +58,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-237">
+              <caret line="33" column="13" lean-forward="true" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+              <folding>
+                <element signature="e#1#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Train_Giorgio.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="102" column="41" selection-start-line="102" selection-start-column="41" selection-end-line="102" selection-end-column="41" />
+            <state relative-caret-position="-975">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
               <folding>
                 <element signature="e#191#217#0" expanded="true" />
               </folding>
@@ -95,6 +112,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>bat</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -105,9 +127,10 @@
         <option value="$PROJECT_DIR$/ReadCSV.py" />
         <option value="$PROJECT_DIR$/ReadDICOM.py" />
         <option value="$PROJECT_DIR$/DataGenerator.py" />
+        <option value="$PROJECT_DIR$/Train_Giorgio.py" />
+        <option value="$PROJECT_DIR$/Test_individual_images.py" />
         <option value="$PROJECT_DIR$/dataGenerator.py" />
         <option value="$PROJECT_DIR$/models_Giorgio.py" />
-        <option value="$PROJECT_DIR$/Train_Giorgio.py" />
       </list>
     </option>
   </component>
@@ -138,11 +161,20 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="E:/INICTEL/Assault/virtual_env/TimberSpecies-env/Scripts/python.exe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings module-name="Kagle" is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="Kagle" />
+      </console-settings>
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -201,19 +233,33 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Train_Giorgio" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Test_individual_images" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Kagle" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test_individual_images.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Train_Giorgio" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Kagle" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Train_Giorgio.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
@@ -226,10 +272,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Train_Giorgio" />
-        <item itemvalue="Python.ReadDICOM" />
-        <item itemvalue="Python.ReadCSV" />
-        <item itemvalue="Python.ReadDICOM" />
-        <item itemvalue="Python.ReadDICOM" />
+        <item itemvalue="Python.Test_individual_images" />
+        <item itemvalue="Python.Train_Giorgio" />
+        <item itemvalue="Python.Test_individual_images" />
+        <item itemvalue="Python.Test_individual_images" />
       </list>
     </recent_temporary>
   </component>
@@ -263,10 +309,10 @@
     <option name="totallyTimeSpent" value="25512000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26066098" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25744048" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -280,8 +326,8 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32900432" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.3582251" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3289689" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.33387887" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -346,40 +392,8 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/giorgioenv/Lib/site-packages/numpy/core/numeric.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="500" selection-start-line="500" selection-end-line="500" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Mask_RCNN/Segmentvideo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ReadDICOM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="48" column="80" selection-start-line="48" selection-end-line="48" selection-end-column="80" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="86" column="52" selection-start-line="86" selection-start-column="52" selection-end-line="86" selection-end-column="52" />
-          <folding>
-            <element signature="e#59#77#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/giorgioenv/Lib/site-packages/numpy/core/numeric.py" />
+    <entry file="file://$USER_HOME$/Mask_RCNN/Segmentvideo.py" />
     <entry file="file://$PROJECT_DIR$/ReadCSV.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -397,22 +411,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
+    <entry file="file://$PROJECT_DIR$/ReadDICOM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="64" column="26" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
+        <state relative-caret-position="238">
+          <caret line="14" column="82" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="82" />
           <folding>
-            <element signature="e#1#53#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-237">
+          <caret line="33" column="13" lean-forward="true" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <folding>
+            <element signature="e#1#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Train_Giorgio.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="102" column="41" selection-start-line="102" selection-start-column="41" selection-end-line="102" selection-end-column="41" />
+        <state relative-caret-position="-975">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="e#191#217#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="205" column="80" selection-start-line="205" selection-start-column="80" selection-end-line="205" selection-end-column="80" />
+          <folding>
+            <element signature="e#1#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataGenerator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+          <folding>
+            <element signature="e#59#77#0" expanded="true" />
           </folding>
         </state>
       </provider>
