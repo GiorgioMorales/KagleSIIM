@@ -198,7 +198,7 @@ def compiled_model (modelname = 'build_generator1', dim =1024, n_channels = 1, l
 
     loss = globals()[loss]
     print("Cargando modelo...")
-    model = globals()[modelname](x(dim, dim, n_channels))
+    model = globals()[modelname]((dim, dim, n_channels))
     model.summary()
 
     # Compila modelol
