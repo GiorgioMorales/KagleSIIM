@@ -92,10 +92,9 @@ class DataGenerator(keras.utils.Sequence):
             img2, mask2 = self.randomflip(img2, mask2)
             img2, mask2 = self.randomzoom(img2, mask2, 5)
 
-            basepath = os.getcwd()[:-7]
-            print(np.max(img2))
-            cv2.imwrite(basepath + '//Pruebas//' + os.path.basename(addr)[:-4] + "_orig.png", img2)
-            cv2.imwrite(basepath + '//Pruebas//' + os.path.basename(addr)[:-4] + "_mask.png", mask2*255)
+            # basepath = os.getcwd()[:-7]
+            # cv2.imwrite(basepath + '//Pruebas//' + os.path.basename(addr)[:-4] + "_orig.png", img2)
+            # cv2.imwrite(basepath + '//Pruebas//' + os.path.basename(addr)[:-4] + "_mask.png", mask2*255)
 
             # Guarda muestra
             X[i,] = np.reshape(img2, (self.dim, self.dim, 1))

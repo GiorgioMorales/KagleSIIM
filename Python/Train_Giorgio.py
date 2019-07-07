@@ -52,7 +52,7 @@ maskpath = basepath + '//Masks'
 n_channels = 1
 dim = 1024
 params = {'dim': dim,
-          'batch_size': 1,
+          'batch_size': 2,
           'n_channels': n_channels,
           'path': path,
           'maskpath': maskpath,
