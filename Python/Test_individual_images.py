@@ -168,7 +168,7 @@ def build_generator1(img_shape=(1024, 1024, 1)):
 # Carga modelo
 model = build_generator1(img_shape=(1024, 1024, 1))
 
-model.load_weights('Redes/weights-train1-17-0.9969.h5')
+model.load_weights('Redes/weights-train1-01-0.9965.h5')
 
 optimizer = Adam(lr=0.03, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 model.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])

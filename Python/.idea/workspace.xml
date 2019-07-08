@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="53e77e59-6b94-46c1-a1f2-7505cfaa2b0f" name="Default Changelist" comment="">
+    <list default="true" id="53e77e59-6b94-46c1-a1f2-7505cfaa2b0f" name="Default Changelist" comment="8/07 - inictel">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Redes/weights-train1-08-0.9967.h5" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Test_individual_images.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test_individual_images.py" afterDir="false" />
@@ -21,7 +21,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ReadDICOM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="119">
               <caret line="14" column="82" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="82" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -33,7 +33,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="665">
+            <state relative-caret-position="538">
               <caret line="97" selection-start-line="97" selection-end-line="97" />
               <folding>
                 <element signature="e#59#77#0" expanded="true" />
@@ -45,11 +45,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="203" column="21" selection-start-line="203" selection-start-column="21" selection-end-line="203" selection-end-column="21" />
+            <state relative-caret-position="-2784">
+              <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
               <folding>
                 <element signature="e#1#53#0" expanded="true" />
-                <element signature="e#1584#6754#0" />
               </folding>
             </state>
           </provider>
@@ -58,11 +57,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1230">
-              <caret line="226" column="36" selection-start-line="185" selection-end-line="228" />
+            <state relative-caret-position="164">
+              <caret line="174" lean-forward="true" selection-start-line="174" selection-end-line="174" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
-                <element signature="e#678#5848#0" />
               </folding>
             </state>
           </provider>
@@ -71,22 +69,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Train_Giorgio.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="56" column="23" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
+            <state relative-caret-position="327">
+              <caret line="97" selection-start-line="97" selection-end-line="97" />
               <folding>
                 <element signature="e#191#217#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ReadCSV.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -116,18 +102,19 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/mask_functions.py" />
-        <option value="$PROJECT_DIR$/ReadCSV.py" />
         <option value="$PROJECT_DIR$/ReadDICOM.py" />
         <option value="$PROJECT_DIR$/DataGenerator.py" />
-        <option value="$PROJECT_DIR$/Train_Giorgio.py" />
-        <option value="$PROJECT_DIR$/models_Giorgio.py" />
         <option value="$PROJECT_DIR$/dataGenerator.py" />
+        <option value="$PROJECT_DIR$/ReadCSV.py" />
+        <option value="$PROJECT_DIR$/models_Giorgio.py" />
+        <option value="$PROJECT_DIR$/Train_Giorgio.py" />
         <option value="$PROJECT_DIR$/Test_individual_images.py" />
       </list>
     </option>
@@ -144,7 +131,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -152,19 +138,25 @@
               <item name="Python" type="b2602c69:ProjectViewProjectNode" />
               <item name="Python" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Python" type="462c0819:PsiDirectoryNode" />
+              <item name="Redes" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="E:/INICTEL/Assault/virtual_env/TimberSpecies-env/Scripts/python.exe" />
+    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -275,8 +267,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Test_individual_images" />
-        <item itemvalue="Python.Test_individual_images" />
         <item itemvalue="Python.Train_Giorgio" />
+        <item itemvalue="Python.Test_individual_images" />
         <item itemvalue="Python.Test_individual_images" />
         <item itemvalue="Python.Train_Giorgio" />
       </list>
@@ -361,10 +353,9 @@
     <option name="totallyTimeSpent" value="25512000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25744048" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25711274" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -378,8 +369,8 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.37315875" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32827735" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.3726977" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -416,7 +407,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="5/07" />
     <MESSAGE value="6/07" />
-    <option name="LAST_COMMIT_MESSAGE" value="6/07" />
+    <MESSAGE value="8/07 - inictel" />
+    <option name="LAST_COMMIT_MESSAGE" value="8/07 - inictel" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -470,12 +462,12 @@
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/giorgioenv/Lib/site-packages/numpy/core/numeric.py" />
     <entry file="file://$USER_HOME$/Mask_RCNN/Segmentvideo.py" />
-    <entry file="file://$PROJECT_DIR$/ReadCSV.py">
+    <entry file="file://$PROJECT_DIR$/ReadDICOM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+        <state relative-caret-position="119">
+          <caret line="14" column="82" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="82" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -487,40 +479,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ReadDICOM.py">
+    <entry file="file://$PROJECT_DIR$/ReadCSV.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="82" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="82" />
+        <state relative-caret-position="493">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="203" column="21" selection-start-line="203" selection-start-column="21" selection-end-line="203" selection-end-column="21" />
-          <folding>
-            <element signature="e#1#53#0" expanded="true" />
-            <element signature="e#1584#6754#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Train_Giorgio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="56" column="23" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
-          <folding>
-            <element signature="e#191#217#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dataGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
+        <state relative-caret-position="538">
           <caret line="97" selection-start-line="97" selection-end-line="97" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
@@ -528,13 +499,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2784">
+          <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+          <folding>
+            <element signature="e#1#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Train_Giorgio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
+          <folding>
+            <element signature="e#191#217#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="226" column="36" selection-start-line="185" selection-end-line="228" />
+        <state relative-caret-position="164">
+          <caret line="174" lean-forward="true" selection-start-line="174" selection-end-line="174" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
-            <element signature="e#678#5848#0" />
           </folding>
         </state>
       </provider>
