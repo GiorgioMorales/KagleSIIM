@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="53e77e59-6b94-46c1-a1f2-7505cfaa2b0f" name="Default Changelist" comment="6/07" />
+    <list default="true" id="53e77e59-6b94-46c1-a1f2-7505cfaa2b0f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dataGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="72" selection-start-line="72" selection-end-line="72" />
+            <state relative-caret-position="270">
+              <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
               <folding>
                 <element signature="e#59#77#0" expanded="true" />
               </folding>
@@ -38,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="199" column="31" lean-forward="true" selection-start-line="199" selection-start-column="31" selection-end-line="199" selection-end-column="31" />
+            <state relative-caret-position="189">
+              <caret line="203" column="21" selection-start-line="203" selection-start-column="21" selection-end-line="203" selection-end-column="21" />
               <folding>
                 <element signature="e#1#53#0" expanded="true" />
                 <element signature="e#1584#6754#0" />
@@ -54,8 +56,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-90">
-              <caret line="174" lean-forward="true" selection-start-line="174" selection-end-line="174" />
+            <state relative-caret-position="295">
+              <caret line="198" column="30" lean-forward="true" selection-start-line="187" selection-end-line="228" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
                 <element signature="e#678#5848#0" />
@@ -68,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/Train_Giorgio.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="231">
-              <caret line="56" column="23" lean-forward="true" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
+              <caret line="56" column="23" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
               <folding>
                 <element signature="e#191#217#0" expanded="true" />
               </folding>
@@ -121,10 +123,10 @@
         <option value="$PROJECT_DIR$/ReadCSV.py" />
         <option value="$PROJECT_DIR$/ReadDICOM.py" />
         <option value="$PROJECT_DIR$/DataGenerator.py" />
-        <option value="$PROJECT_DIR$/dataGenerator.py" />
-        <option value="$PROJECT_DIR$/Test_individual_images.py" />
         <option value="$PROJECT_DIR$/Train_Giorgio.py" />
         <option value="$PROJECT_DIR$/models_Giorgio.py" />
+        <option value="$PROJECT_DIR$/Test_individual_images.py" />
+        <option value="$PROJECT_DIR$/dataGenerator.py" />
       </list>
     </option>
   </component>
@@ -187,7 +189,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Train_Giorgio">
+  <component name="RunManager" selected="Python.Test_individual_images">
     <configuration name="ReadCSV" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Kagle" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -270,11 +272,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Train_Giorgio" />
         <item itemvalue="Python.Test_individual_images" />
         <item itemvalue="Python.Train_Giorgio" />
         <item itemvalue="Python.Test_individual_images" />
         <item itemvalue="Python.Train_Giorgio" />
+        <item itemvalue="Python.Test_individual_images" />
       </list>
     </recent_temporary>
   </component>
@@ -322,7 +324,28 @@
       <option name="project" value="LOCAL" />
       <updated>1562478762892</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="6/07">
+      <created>1562479042539</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1562479042539</updated>
+    </task>
+    <task id="LOCAL-00006" summary="6/07">
+      <created>1562479193737</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1562479193737</updated>
+    </task>
+    <task id="LOCAL-00007" summary="6/07">
+      <created>1562553823116</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1562553823116</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -465,12 +488,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataGenerator.py">
+    <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
+        <state relative-caret-position="189">
+          <caret line="203" column="21" selection-start-line="203" selection-start-column="21" selection-end-line="203" selection-end-column="21" />
           <folding>
-            <element signature="e#59#77#0" expanded="true" />
+            <element signature="e#1#53#0" expanded="true" />
+            <element signature="e#1584#6754#0" />
           </folding>
         </state>
       </provider>
@@ -478,7 +502,7 @@
     <entry file="file://$PROJECT_DIR$/Train_Giorgio.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
-          <caret line="56" column="23" lean-forward="true" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
+          <caret line="56" column="23" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
           <folding>
             <element signature="e#191#217#0" expanded="true" />
           </folding>
@@ -487,8 +511,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90">
-          <caret line="174" lean-forward="true" selection-start-line="174" selection-end-line="174" />
+        <state relative-caret-position="295">
+          <caret line="198" column="30" lean-forward="true" selection-start-line="187" selection-end-line="228" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
             <element signature="e#678#5848#0" />
@@ -496,13 +520,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
+    <entry file="file://$PROJECT_DIR$/dataGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="199" column="31" lean-forward="true" selection-start-line="199" selection-start-column="31" selection-end-line="199" selection-end-column="31" />
+        <state relative-caret-position="270">
+          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
           <folding>
-            <element signature="e#1#53#0" expanded="true" />
-            <element signature="e#1584#6754#0" />
+            <element signature="e#59#77#0" expanded="true" />
           </folding>
         </state>
       </provider>
