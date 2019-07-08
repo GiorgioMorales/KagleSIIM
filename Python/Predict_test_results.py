@@ -80,13 +80,18 @@ with open('persons.csv', 'w') as csvfile:
         sizes = stats[1:, -1]
         nb_components = nb_components - 1
         min_size = 70
-        y2 = np.zeros(y.shape)
+        y2 = np.zeros(y.shape, dtype=np.uint8)
         for i in range(0, nb_components):
             if sizes[i] >= min_size:
-                y2[output == i + 1] = 1
+                y2[output == i + 1] = 255
 
-        # Codifica máscara
-        mask = (cv2.resize(y2, (1024, 1024)) > 128).astype(np.uint8) * 255
-        rle = mask2rle(mask, 1024, 1024)
+        nb_components, _, _, _ = cv2.connectedComponentsWithStats(y2, connectivity=8)
+
+        if nb_components == 0:
+            rle = ' -1'
+        else:
+            # Codifica máscara
+            mask = (cv2.resize(y2, (1024, 1024)) > 128).astype(np.uint8) * 255
+            rle = mask2rle(mask, 1024, 1024)
 
         filewriter.writerow([name, rle])

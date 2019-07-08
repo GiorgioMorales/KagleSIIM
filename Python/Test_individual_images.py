@@ -175,7 +175,7 @@ def build_generator1(img_shape=(1024, 1024, 1)):
 
 dim = 256
 model = compiled_model('build_generator2', dim=dim, n_channels = 1, lr = 0.0003, loss = 'focal_loss')
-model.load_weights('Redes/weights-train1-100-0.9791.h5')
+model.load_weights('Redes/weights-train1-62-0.9834.h5')
 optimizer = Adam(lr=0.03, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 model.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
 
