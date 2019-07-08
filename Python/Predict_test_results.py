@@ -51,47 +51,54 @@ Predice resultados
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 print('Empieza predicción')
 
-with open('persons.csv', 'w') as csvfile:
+# with open('persons.csv', 'w') as csvfile:
+#
+#     filewriter = csv.writer(csvfile, delimiter=',')
+#     filewriter.writerow(['ImageID', 'EncodedPixels'])
+rles = []
+ids = []
+for cnt, dir in enumerate(addri):
 
-    filewriter = csv.writer(csvfile, delimiter=',')
-    filewriter.writerow(['ImageID', 'EncodedPixels'])
+    # Lee imagen
+    ds = pydicom.read_file(dir)
+    img = ds.pixel_array
+    # Extrar nombre
+    name = os.path.basename(dir)[:-4]
+    ids.append(name)
+    if dim != 1024:
+        img = cv2.resize(img, (dim, dim))
 
-    for cnt, dir in enumerate(addri):
+    # Predice resultado
+    st = time.time()
+    y = np.reshape(model.predict(np.reshape(img, (1, dim, dim, 1))), (dim, dim)) * 255
+    end = time.time()
 
-        # Lee imagen
-        ds = pydicom.read_file(dir)
-        img = ds.pixel_array
-        # Extrar nombre
-        name = os.path.basename(dir)[:-4]
+    print(cnt)
 
-        if dim != 1024:
-            img = cv2.resize(img, (dim, dim))
+    # Delets small objects
+    nb_components, output, stats, centroids = cv2.connectedComponentsWithStats((y > 128).astype(np.uint8) * 255,
+                                                                               connectivity=8)
+    sizes = stats[1:, -1]
+    nb_components = nb_components - 1
+    min_size = 70
+    y2 = np.zeros(y.shape, dtype=np.uint8)
+    for i in range(0, nb_components):
+        if sizes[i] >= min_size:
+            y2[output == i + 1] = 255
 
-        # Predice resultado
-        st = time.time()
-        y = np.reshape(model.predict(np.reshape(img, (1, dim, dim, 1))), (dim, dim)) * 255
-        end = time.time()
+    nb_components, _, _, _ = cv2.connectedComponentsWithStats(y2, connectivity=8)
 
-        print(end - st)
+    # if nb_components == 0:
+    #     rle =
+    #     filewriter.writerow([name, '-1'])
+    # else:
+    # Codifica máscara
+    mask = (cv2.resize(y2, (1024, 1024)) > 128).astype(np.uint8) * 255
+    rles.append(mask2rle(mask, 1024, 1024))
 
-        # Delets small objects
-        nb_components, output, stats, centroids = cv2.connectedComponentsWithStats((y > 128).astype(np.uint8) * 255,
-                                                                                   connectivity=8)
-        sizes = stats[1:, -1]
-        nb_components = nb_components - 1
-        min_size = 70
-        y2 = np.zeros(y.shape, dtype=np.uint8)
-        for i in range(0, nb_components):
-            if sizes[i] >= min_size:
-                y2[output == i + 1] = 255
-
-        nb_components, _, _, _ = cv2.connectedComponentsWithStats(y2, connectivity=8)
-
-        if nb_components == 0:
-            rle = ' -1'
-        else:
-            # Codifica máscara
-            mask = (cv2.resize(y2, (1024, 1024)) > 128).astype(np.uint8) * 255
-            rle = mask2rle(mask, 1024, 1024)
-
-        filewriter.writerow([name, rle])
+    # filewriter.writerow([name, rle])
+import pandas as pd
+sub_df = pd.DataFrame({'ImageId': ids, 'EncodedPixels': rles})
+sub_df.loc[sub_df.EncodedPixels=='', 'EncodedPixels'] = '-1'
+sub_df.to_csv('submission.csv', index=False)
+sub_df.head()
