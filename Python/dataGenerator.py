@@ -80,9 +80,9 @@ class DataGenerator(keras.utils.Sequence):
             ds = pydicom.read_file(addr)
             img = ds.pixel_array
             # Añade CLAHE (Contrast Limited Adaptive Histogram Equalization)
-            #clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(16, 16))
-            #img2 = np.reshape((clahe.apply(img)).astype(np.uint8), (self.dim, self.dim, 1))
-            img2 = np.reshape(img.astype(np.uint8), (self.dim, self.dim, 1))
+            clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(16, 16))
+            img2 = np.reshape((clahe.apply(img)).astype(np.uint8), (self.dim, self.dim, 1))
+            #img2 = np.reshape(img.astype(np.uint8), (self.dim, self.dim, 1))
 
             # Lee máscara
             mask = np.flip(np.rot90(cv2.imread(addrm, 0), 3), 1)
