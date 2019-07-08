@@ -80,12 +80,20 @@ class DataGenerator(keras.utils.Sequence):
             ds = pydicom.read_file(addr)
             img = ds.pixel_array
             # Añade CLAHE (Contrast Limited Adaptive Histogram Equalization)
-            clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(16, 16))
-            img2 = np.reshape((clahe.apply(img)).astype(np.uint8), (self.dim, self.dim, 1))
-            #img2 = np.reshape(img.astype(np.uint8), (self.dim, self.dim, 1))
+            # clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(16, 16))
+            # img2 = (clahe.apply(img)).astype(np.uint8)
+            img2 = img.astype(np.uint8)
 
             # Lee máscara
             mask = np.flip(np.rot90(cv2.imread(addrm, 0), 3), 1)
+
+            # Resize si es necesario
+            if self.dim != 1024:
+                img2 = cv2.resize(img2, (self.dim, self.dim))
+                mask = cv2.resize(mask, (self.dim, self.dim))
+
+            # Lo pone en la forma adecuada
+            img2 = np.reshape(img2,(self.dim, self.dim, 1))
             mask2 = np.reshape((mask / 255), (self.dim, self.dim, 1))
 
             # Añade variación aleatoria de color a cada canal
@@ -98,7 +106,7 @@ class DataGenerator(keras.utils.Sequence):
 
             # Guarda muestra
             X[i,] = np.reshape(img2, (self.dim, self.dim, 1))
-            # Guarda máscara / label
+            # Guarda máscara / labeladdrm
             y[i,] = mask2
 
         return X, y

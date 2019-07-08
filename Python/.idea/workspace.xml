@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53e77e59-6b94-46c1-a1f2-7505cfaa2b0f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Predict_test_results.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Kagle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Kagle.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Redes/weights-train1-08-0.9967.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReadCSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReadCSV.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReadDICOM.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReadDICOM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Redes/weights-train1-02-0.9952.h5" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Test_individual_images.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test_individual_images.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Train_Giorgio.py" beforeDir="false" afterPath="$PROJECT_DIR$/Train_Giorgio.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models_Giorgio.py" beforeDir="false" afterPath="$PROJECT_DIR$/models_Giorgio.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,16 +21,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Python$ReadCSV.coverage" NAME="ReadCSV Coverage Results" MODIFIED="1562166793120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Python$Train_Giorgio.coverage" NAME="Train_Giorgio Coverage Results" MODIFIED="1562191196819" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Python$ReadCSV.coverage" NAME="ReadCSV Coverage Results" MODIFIED="1562609527006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Python$Train_Giorgio.coverage" NAME="Train_Giorgio Coverage Results" MODIFIED="1562609534389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ReadDICOM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="14" column="82" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="82" />
+            <state relative-caret-position="355">
+              <caret line="58" column="22" selection-start-line="53" selection-end-line="62" selection-end-column="85" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -33,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="538">
-              <caret line="97" selection-start-line="97" selection-end-line="97" />
+            <state relative-caret-position="168">
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
               <folding>
                 <element signature="e#59#77#0" expanded="true" />
               </folding>
@@ -45,22 +53,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2784">
-              <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+            <state relative-caret-position="221">
+              <caret line="19" selection-start-line="19" selection-end-line="29" selection-end-column="123" />
               <folding>
                 <element signature="e#1#53#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="174" selection-start-line="174" selection-end-line="174" />
-              <folding>
-                <element signature="e#0#52#0" expanded="true" />
+                <element signature="e#2013#7183#0" />
               </folding>
             </state>
           </provider>
@@ -69,20 +66,54 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Train_Giorgio.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="97" selection-start-line="97" selection-end-line="97" />
+            <state relative-caret-position="91">
+              <caret line="48" selection-start-line="48" selection-end-line="67" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="177" column="51" selection-start-line="177" selection-start-column="51" selection-end-line="177" selection-end-column="51" />
               <folding>
-                <element signature="e#191#217#0" expanded="true" />
+                <element signature="e#0#52#0" expanded="true" />
+                <element signature="e#953#6123#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Predict_test_results.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="520">
+              <caret line="79" column="29" lean-forward="true" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
+              <folding>
+                <element signature="e#1#43#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ReadCSV.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-column="10" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mask_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="493">
+              <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -109,13 +140,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/mask_functions.py" />
-        <option value="$PROJECT_DIR$/ReadDICOM.py" />
         <option value="$PROJECT_DIR$/DataGenerator.py" />
-        <option value="$PROJECT_DIR$/dataGenerator.py" />
-        <option value="$PROJECT_DIR$/ReadCSV.py" />
         <option value="$PROJECT_DIR$/models_Giorgio.py" />
+        <option value="$PROJECT_DIR$/ReadCSV.py" />
         <option value="$PROJECT_DIR$/Train_Giorgio.py" />
+        <option value="$PROJECT_DIR$/dataGenerator.py" />
+        <option value="$PROJECT_DIR$/ReadDICOM.py" />
         <option value="$PROJECT_DIR$/Test_individual_images.py" />
+        <option value="$PROJECT_DIR$/Predict_test_results.py" />
       </list>
     </option>
   </component>
@@ -168,6 +200,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\KagleSIIM\Python\Redes" />
       <recent name="C:\Users\Giorgio\KagleSIIM\Python\Redes" />
     </key>
   </component>
@@ -183,14 +216,30 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Test_individual_images">
+  <component name="RunManager" selected="Python.Predict_test_results">
+    <configuration name="Predict_test_results" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Kagle" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Predict_test_results.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="ReadCSV" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Kagle" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -232,11 +281,15 @@
       <module name="Kagle" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test_individual_images.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
@@ -255,6 +308,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Train_Giorgio.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
@@ -266,9 +320,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Test_individual_images" />
+        <item itemvalue="Python.Predict_test_results" />
         <item itemvalue="Python.Train_Giorgio" />
-        <item itemvalue="Python.Test_individual_images" />
+        <item itemvalue="Python.ReadCSV" />
         <item itemvalue="Python.Test_individual_images" />
         <item itemvalue="Python.Train_Giorgio" />
       </list>
@@ -357,12 +411,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25512000" />
+    <option name="totallyTimeSpent" value="40134000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25711274" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26332623" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -377,7 +432,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32827735" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.3726977" />
+      <window_info anchor="bottom" id="Python Console" order="12" visible="true" weight="0.3582251" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -417,50 +472,61 @@
     <MESSAGE value="8/07 - inictel" />
     <option name="LAST_COMMIT_MESSAGE" value="8/07 - inictel" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dataGenerator.py</url>
+          <line>87</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>ID[len(self.path):-4]</expression-string>
+        <expression-string>np.flip(np.rot90(cv2.imread(addrm, 0), 3), 1)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>os.path.join(self.maskpath, ID[len(self.path):-4])</expression-string>
+        <expression-string>np.rot90(cv2.imread(addrm, 0), 3)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>addrm</expression-string>
+        <expression-string>cv2.imread(addrm, 0)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>addr</expression-string>
+        <expression-string>row[1] == ' -1'</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.maskpath</expression-string>
+        <expression-string>row[1] == '-1'</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>maskpath</expression-string>
+        <expression-string>row[1] == -1</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>(array == -1) == True</expression-string>
+        <expression-string>row[1]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>array == 2</expression-string>
+        <expression-string>row[1] == str(-1)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>array == -1</expression-string>
+        <expression-string>row[1] != '-1'</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -469,70 +535,96 @@
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/giorgioenv/Lib/site-packages/numpy/core/numeric.py" />
     <entry file="file://$USER_HOME$/Mask_RCNN/Segmentvideo.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/multiprocessing/pool.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="120" selection-start-line="120" selection-end-line="120" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/giorgioenv/Lib/site-packages/keras/utils/data_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="400" selection-start-line="400" selection-end-line="400" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ReadDICOM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="14" column="82" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="82" />
+        <state relative-caret-position="355">
+          <caret line="58" column="22" selection-start-line="53" selection-end-line="62" selection-end-column="85" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mask_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ReadCSV.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="97" selection-start-line="97" selection-end-line="97" />
+        <state relative-caret-position="168">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2784">
-          <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
-          <folding>
-            <element signature="e#1#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Train_Giorgio.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="97" selection-start-line="97" selection-end-line="97" />
-          <folding>
-            <element signature="e#191#217#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="91">
+          <caret line="48" selection-start-line="48" selection-end-line="67" selection-end-column="71" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="174" selection-start-line="174" selection-end-line="174" />
+        <state relative-caret-position="119">
+          <caret line="177" column="51" selection-start-line="177" selection-start-column="51" selection-end-line="177" selection-end-column="51" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
+            <element signature="e#953#6123#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="19" selection-start-line="19" selection-end-line="29" selection-end-column="123" />
+          <folding>
+            <element signature="e#1#53#0" expanded="true" />
+            <element signature="e#2013#7183#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/persons.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Predict_test_results.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="79" column="29" lean-forward="true" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
+          <folding>
+            <element signature="e#1#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ReadCSV.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="10" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mask_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
         </state>
       </provider>
     </entry>

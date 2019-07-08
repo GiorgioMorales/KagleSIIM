@@ -51,3 +51,13 @@ mask = np.flip(np.rot90(cv2.imread(os.path.join(maskdir, d) + '.tif', 0), 3), 1)
 plt.figure()
 plt.imshow(mask, cmap='gray')
 plt.show()
+
+inputdir = 'C://Users//User//KagleSIIM//Train/'
+maskdir = 'C://Users//User//KagleSIIM//MasksO/'
+# Crea carpeta sólo para imágenes con pneumothorax
+orig_path = 'C://Users//User//KagleSIIM//Train/*.dcm'
+for dir in glob.glob(orig_path):
+    mdir = os.path.basename(dir)[:-4] + ".tif"
+
+    if os.path.exists(os.path.join(maskdir, mdir)):
+        copyfile(dir, 'C://Users//User//KagleSIIM//TrainO//' + os.path.basename(dir))

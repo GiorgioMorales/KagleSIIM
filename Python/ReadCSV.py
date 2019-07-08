@@ -18,8 +18,9 @@ with open('train-rle.csv') as csv_file:
             maskname.append(row[0])
             maskarray.append(row[1])
 
-            mask = rle2mask(row[1], 1024, 1024)
-            cv2.imwrite('E://Giorgio//Kagle//Masks//' + str(row[0]) + ".tif", mask)
+            if not(row[1] == ' -1' or row[1] == '-1'):
+                mask = rle2mask(row[1], 1024, 1024)
+                cv2.imwrite('C://Users//User//KagleSIIM//MasksO//' + str(row[0]) + ".tif", mask)
 
         else:
             line_count += 1

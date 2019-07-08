@@ -166,10 +166,16 @@ def build_generator1(img_shape=(1024, 1024, 1)):
 
 
 # Carga modelo
-model = build_generator1(img_shape=(1024, 1024, 1))
+# model = build_generator1(img_shape=(1024, 1024, 1))
+#
+# model.load_weights('Redes/weights-train1-26-0.9967.h5')
+#
+# optimizer = Adam(lr=0.03, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
+# model.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
 
-model.load_weights('Redes/weights-train1-01-0.9965.h5')
-
+dim = 256
+model = compiled_model('build_generator2', dim=dim, n_channels = 1, lr = 0.0003, loss = 'focal_loss')
+model.load_weights('Redes/weights-train1-100-0.9791.h5')
 optimizer = Adam(lr=0.03, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 model.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
 
@@ -179,16 +185,16 @@ Carga imágenes al azar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 basepath = os.getcwd()[:-7]
-orig_path = basepath + '//Train//*.dcm'
+orig_path = basepath + '//TrainO//*.dcm'
 
 # Obtiene una lista de las direcciones de las imágenes y sus máscaras
 addri = sorted(glob.glob(orig_path))
 
 # Reordena aleatoriamente las direcciones por pares
-#shuffle(addri)
+shuffle(addri)
 
 dirimages = addri[0:10]
-maskpath = basepath + '//Masks//'
+maskpath = basepath + '//MasksO//'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -202,25 +208,40 @@ for cnt, dir in enumerate(dirimages):
     # Lee imagen
     ds = pydicom.read_file(dir)
     img = ds.pixel_array
-    clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(16, 16))
-    img = (clahe.apply(img)).astype(np.uint8)
+    #clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(16, 16))
+    #img = (clahe.apply(img)).astype(np.uint8)
     # Dirección de máscara
     dirm = maskpath + os.path.basename(dir)[:-4] + '.tif'
     # Lee máscara
     mask = np.flip(np.rot90(cv2.imread(dirm, 0), 3), 1)
+
+    if dim != 1024:
+        img = cv2.resize(img, (dim, dim))
+        mask = cv2.resize(mask, (dim, dim))
+
     # Predice resultado
     st = time.time()
-    y = np.reshape(model.predict(np.reshape(img, (1, 1024, 1024, 1))), (1024, 1024)) * 255
+    y = np.reshape(model.predict(np.reshape(img, (1, dim, dim, 1))), (dim, dim)) * 255
     end = time.time()
 
     print(end - st)
+
+    # Delets small objects
+    nb_components, output, stats, centroids = cv2.connectedComponentsWithStats((y>128).astype(np.uint8)*255, connectivity=8)
+    sizes = stats[1:, -1]
+    nb_components = nb_components - 1
+    min_size = 70
+    y2 = np.zeros(y.shape)
+    for i in range(0, nb_components):
+        if sizes[i] >= min_size:
+            y2[output == i + 1] = 1
 
     # plt
     titles = ['Original', 'Segmentation', 'Ground truth']
     axs[0, cnt].imshow(img)
     axs[0, cnt].set_title(titles[0])
     axs[0, cnt].axis('off')
-    axs[1, cnt].imshow(y)
+    axs[1, cnt].imshow((y2) * y)
     axs[1, cnt].set_title(titles[1])
     axs[1, cnt].axis('off')
     axs[2, cnt].imshow(mask)
