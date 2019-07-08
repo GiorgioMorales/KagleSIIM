@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="53e77e59-6b94-46c1-a1f2-7505cfaa2b0f" name="Default Changelist" comment="8/07 - inictel">
+    <list default="true" id="53e77e59-6b94-46c1-a1f2-7505cfaa2b0f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Redes/weights-train1-08-0.9967.h5" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Test_individual_images.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test_individual_images.py" afterDir="false" />
@@ -58,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="164">
-              <caret line="174" lean-forward="true" selection-start-line="174" selection-end-line="174" />
+              <caret line="174" selection-start-line="174" selection-end-line="174" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
               </folding>
@@ -346,7 +346,14 @@
       <option name="project" value="LOCAL" />
       <updated>1562554143487</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="8/07 - inictel">
+      <created>1562601652894</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1562601652894</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -522,7 +529,7 @@
     <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
-          <caret line="174" lean-forward="true" selection-start-line="174" selection-end-line="174" />
+          <caret line="174" selection-start-line="174" selection-end-line="174" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
           </folding>

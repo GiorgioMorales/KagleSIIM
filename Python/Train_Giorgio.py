@@ -52,7 +52,7 @@ maskpath = basepath + '//Masks'
 n_channels = 1
 dim = 1024
 params = {'dim': dim,
-          'batch_size': 2,
+          'batch_size': 10,
           'n_channels': n_channels,
           'path': path,
           'maskpath': maskpath,
@@ -87,11 +87,13 @@ Entrenamiento
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 # Carga modelo
-model = compiled_model('build_generator1', loss='focal_loss')
+model = compiled_model('build_generator1', lr=0.0003, loss='focal_loss')
+
+model.load_weights('Redes/weights-train1-13-0.9976.h5')
 
 # checkpoint
 filepath = "weights-train1-{epoch:02d}-{val_acc:.4f}.h5"
-checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
+checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=False, mode='max')
 callbacks_list = [checkpoint]
 
 # Train model
