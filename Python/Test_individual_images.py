@@ -168,7 +168,7 @@ def build_generator1(img_shape=(1024, 1024, 1)):
 # Carga modelo
 model = build_generator1(img_shape=(1024, 1024, 1))
 
-model.load_weights('Redes/weights-train1-13-0.9976.h5')
+model.load_weights('Redes/weights-train1-17-0.9969.h5')
 
 optimizer = Adam(lr=0.03, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 model.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
@@ -185,7 +185,7 @@ orig_path = basepath + '//Train//*.dcm'
 addri = sorted(glob.glob(orig_path))
 
 # Reordena aleatoriamente las direcciones por pares
-shuffle(addri)
+#shuffle(addri)
 
 dirimages = addri[0:10]
 maskpath = basepath + '//Masks//'
@@ -202,8 +202,8 @@ for cnt, dir in enumerate(dirimages):
     # Lee imagen
     ds = pydicom.read_file(dir)
     img = ds.pixel_array
-    #clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(16, 16))
-    #img = (clahe.apply(img)).astype(np.uint8)
+    clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(16, 16))
+    img = (clahe.apply(img)).astype(np.uint8)
     # Dirección de máscara
     dirm = maskpath + os.path.basename(dir)[:-4] + '.tif'
     # Lee máscara
