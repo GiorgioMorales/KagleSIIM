@@ -53,7 +53,7 @@ maskpath = basepath + '//Masks'
 n_channels = 1
 dim = 256
 params = {'dim': dim,
-          'batch_size': 10,
+          'batch_size': 24,
           'n_channels': n_channels,
           'path': path,
           'maskpath': maskpath,
@@ -92,7 +92,10 @@ def relu6(x):
     return K.relu(x, max_value=6)
 
 
-model = load_model('Redes/Test3.h5', custom_objects={'relu6': relu6, 'focal_loss': focal_loss})
+#model = load_model('Redes/Test3.h5', custom_objects={'relu6': relu6, 'focal_loss': focal_loss})
+
+model = compiled_model('build_generator2', dim=dim, n_channels = 1, lr = 0.0003, loss = 'focal_loss')
+model.load_weights('Redes/weights-train1-200-0.9843.h5')
 
 # Bloquea el entrenamiento desde la primera capa hasta la capa "block5_pool"
 for layer in model.layers:

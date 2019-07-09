@@ -185,7 +185,7 @@ Carga imágenes al azar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 basepath = os.getcwd()[:-7]
-orig_path = basepath + '//Train//*.dcm'
+orig_path = basepath + '//TrainO//*.dcm'
 
 # Obtiene una lista de las direcciones de las imágenes y sus máscaras
 addri = sorted(glob.glob(orig_path))
@@ -194,7 +194,7 @@ addri = sorted(glob.glob(orig_path))
 shuffle(addri)
 
 dirimages = addri[0:10]
-maskpath = basepath + '//Masks//'
+maskpath = basepath + '//MasksO//'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -227,7 +227,7 @@ for cnt, dir in enumerate(dirimages):
     print(end - st)
 
     # Delets small objects
-    nb_components, output, stats, centroids = cv2.connectedComponentsWithStats((y>160).astype(np.uint8)*255, connectivity=8)
+    nb_components, output, stats, centroids = cv2.connectedComponentsWithStats((y > 120).astype(np.uint8)*255, connectivity=8)
     sizes = stats[1:, -1]
     nb_components = nb_components - 1
     min_size = 70
