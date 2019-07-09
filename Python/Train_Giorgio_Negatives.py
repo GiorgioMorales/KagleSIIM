@@ -14,7 +14,7 @@ from keras.callbacks import ModelCheckpoint
 from keras.models import load_model
 
 from models_Giorgio import compiled_model, focal_loss
-
+from keras.optimizers import Adam
 from dataGenerator import DataGenerator
 
 import keras.backend as K
@@ -100,7 +100,8 @@ for layer in model.layers:
     if layer.name == 'concatenate_2':
         print('Stop freezing layers')
         break
-
+optimizer = Adam(lr=0.0003, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
+model.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
 
 # checkpoint
 filepath = "weights-train_negatives-{epoch:02d}-{val_acc:.4f}.h5"

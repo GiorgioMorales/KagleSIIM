@@ -175,7 +175,7 @@ def build_generator1(img_shape=(1024, 1024, 1)):
 
 dim = 256
 model = compiled_model('build_generator2', dim=dim, n_channels = 1, lr = 0.0003, loss = 'focal_loss')
-model.load_weights('Redes/weights-train1-139-0.9844.h5')
+model.load_weights('Redes/weights-train_negatives-11-0.9963.h5')
 optimizer = Adam(lr=0.03, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 model.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
 
@@ -227,7 +227,7 @@ for cnt, dir in enumerate(dirimages):
     print(end - st)
 
     # Delets small objects
-    nb_components, output, stats, centroids = cv2.connectedComponentsWithStats((y>128).astype(np.uint8)*255, connectivity=8)
+    nb_components, output, stats, centroids = cv2.connectedComponentsWithStats((y>160).astype(np.uint8)*255, connectivity=8)
     sizes = stats[1:, -1]
     nb_components = nb_components - 1
     min_size = 70
