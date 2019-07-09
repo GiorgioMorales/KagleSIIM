@@ -43,7 +43,7 @@ addri = sorted(glob.glob(orig_path))
 
 # Reordena aleatoriamente las direcciones por pares
 shuffle(addri)
-lon = 200
+lon = 400
 dirimages = addri[0:lon]
 maskpath = basepath + '//Masks//'
 
