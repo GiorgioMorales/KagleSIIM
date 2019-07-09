@@ -13,7 +13,7 @@ import os
 from keras.callbacks import ModelCheckpoint
 from keras.models import load_model
 
-from models_Giorgio import compiled_model
+from models_Giorgio import compiled_model, focal_loss
 
 from dataGenerator import DataGenerator
 
@@ -88,7 +88,11 @@ Entrenamiento
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 # Carga modelo
-model = load_model('Redes/Test3.h5')
+def relu6(x):
+    return K.relu(x, max_value=6)
+
+
+model = load_model('Redes/Test3.h5', custom_objects={'relu6': relu6, 'focal_loss': focal_loss})
 
 # Bloquea el entrenamiento desde la primera capa hasta la capa "block5_pool"
 for layer in model.layers:
