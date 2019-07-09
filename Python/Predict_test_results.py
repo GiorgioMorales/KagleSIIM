@@ -26,7 +26,7 @@ def relu6(x):
     return K.relu(x, max_value=6)
 
 
-model = load_model('Redes/Test1.h5', custom_objects={'relu6': relu6, 'focal_loss': focal_loss})
+model = load_model('Redes/Test2.h5', custom_objects={'relu6': relu6, 'focal_loss': focal_loss})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
