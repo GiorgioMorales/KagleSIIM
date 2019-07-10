@@ -107,7 +107,7 @@ for cnt, dir in enumerate(addri):
 
     print(cnt)
 
-    if pred1[cnt] == 0:
+    if pred1[cnt] <= 0.5:
         mask = np.zeros((1024, 1024))
     else:
         pred = np.reshape(model2.predict(np.reshape(images[cnt], (1, dim, dim, 1))), (256, 256))
