@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53e77e59-6b94-46c1-a1f2-7505cfaa2b0f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Train_Giorgio_Clasificacion.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataGeneratorclass.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Kagle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Kagle.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Predict_test_results_combined.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Redes/weights-train1-13-0.9976.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Redes/weights-train1-139-0.9844.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Redes/weights-train1-45-0.9842.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Redes/weights-train1-62-0.9834.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_individual_images.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test_individual_images.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Train_Giorgio_Negatives.py" beforeDir="false" afterPath="$PROJECT_DIR$/Train_Giorgio_Negatives.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models_Giorgio.py" beforeDir="false" afterPath="$PROJECT_DIR$/models_Giorgio.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Redes/Test3.h5" beforeDir="false" afterPath="$PROJECT_DIR$/Redes/Test3.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/submission.csv" beforeDir="false" afterPath="$PROJECT_DIR$/submission.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,22 +20,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ReadDICOM.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="14" column="82" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="82" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="208">
-              <caret line="88" lean-forward="true" selection-end-line="112" />
+              <caret line="88" selection-end-line="112" />
               <folding>
                 <element signature="e#59#77#0" expanded="true" />
               </folding>
@@ -67,7 +47,7 @@
         <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="352" column="4" lean-forward="true" selection-start-line="352" selection-start-column="4" selection-end-line="352" selection-end-column="22" />
+              <caret line="352" column="4" selection-start-line="352" selection-start-column="4" selection-end-line="352" selection-end-column="22" />
               <folding>
                 <element signature="e#1#53#0" expanded="true" />
                 <element signature="e#2013#7183#0" />
@@ -80,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-693">
-              <caret line="183" column="22" lean-forward="true" selection-start-line="183" selection-start-column="22" selection-end-line="183" selection-end-column="22" />
+            <state relative-caret-position="191">
+              <caret line="229" column="86" selection-start-line="229" selection-start-column="85" selection-end-line="229" selection-end-column="86" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
                 <element signature="e#953#6123#0" />
@@ -93,8 +73,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Predict_test_results.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="95" column="14" selection-start-line="95" selection-start-column="14" selection-end-line="95" selection-end-column="14" />
+            <state relative-caret-position="38">
+              <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Predict_test_results_combined.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1475">
+              <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -111,11 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Train_Giorgio_Clasificacion.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="89" column="42" selection-start-line="89" selection-start-column="42" selection-end-line="89" selection-end-column="42" />
+            <state relative-caret-position="582">
+              <caret line="106" selection-start-line="106" selection-end-line="106" />
               <folding>
                 <element signature="e#191#217#0" expanded="true" />
               </folding>
@@ -178,12 +167,13 @@
         <option value="$PROJECT_DIR$/models_Giorgio.py" />
         <option value="$PROJECT_DIR$/dataGeneratorclass.py" />
         <option value="$PROJECT_DIR$/Train_Giorgio_Clasificacion.py" />
+        <option value="$PROJECT_DIR$/Predict_test_results_combined.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-705" />
+    <option name="y" value="136" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -251,21 +241,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Train_Giorgio_Clasificacion">
-    <configuration name="Predict_test_results" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.Predict_test_results_combined">
+    <configuration name="Predict_test_results_combined" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Kagle" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Predict_test_results.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Predict_test_results_combined.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -352,9 +338,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Train_Giorgio_Clasificacion" />
+        <item itemvalue="Python.Predict_test_results_combined" />
         <item itemvalue="Python.Test_individual_images" />
-        <item itemvalue="Python.Train_Giorgio_Negatives" />
+        <item itemvalue="Python.Train_Giorgio_Clasificacion" />
         <item itemvalue="Python.Test_individual_images" />
         <item itemvalue="Python.Train_Giorgio_Negatives" />
       </list>
@@ -460,7 +446,14 @@
       <option name="project" value="LOCAL" />
       <updated>1562643906570</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="commit para clasificacion">
+      <created>1562709174512</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1562709174512</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -523,7 +516,8 @@
     <MESSAGE value="6/07" />
     <MESSAGE value="8/07 - inictel" />
     <MESSAGE value="8/07 - inictel2" />
-    <option name="LAST_COMMIT_MESSAGE" value="8/07 - inictel2" />
+    <MESSAGE value="commit para clasificacion" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit para clasificacion" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -635,13 +629,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Predict_test_results.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="95" column="14" selection-start-line="95" selection-start-column="14" selection-end-line="95" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Train_Giorgio_Negatives.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
@@ -655,20 +642,9 @@
     <entry file="file://$PROJECT_DIR$/dataGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
-          <caret line="88" lean-forward="true" selection-end-line="112" />
+          <caret line="88" selection-end-line="112" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-693">
-          <caret line="183" column="22" lean-forward="true" selection-start-line="183" selection-start-column="22" selection-end-line="183" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-            <element signature="e#953#6123#0" />
           </folding>
         </state>
       </provider>
@@ -683,10 +659,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Train_Giorgio_Clasificacion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="582">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
+          <folding>
+            <element signature="e#191#217#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Predict_test_results.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="352" column="4" lean-forward="true" selection-start-line="352" selection-start-column="4" selection-end-line="352" selection-end-column="22" />
+          <caret line="352" column="4" selection-start-line="352" selection-start-column="4" selection-end-line="352" selection-end-column="22" />
           <folding>
             <element signature="e#1#53#0" expanded="true" />
             <element signature="e#2013#7183#0" />
@@ -695,13 +688,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Train_Giorgio_Clasificacion.py">
+    <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="89" column="42" selection-start-line="89" selection-start-column="42" selection-end-line="89" selection-end-column="42" />
+        <state relative-caret-position="191">
+          <caret line="229" column="86" selection-start-line="229" selection-start-column="85" selection-end-line="229" selection-end-column="86" />
           <folding>
-            <element signature="e#191#217#0" expanded="true" />
+            <element signature="e#0#52#0" expanded="true" />
+            <element signature="e#953#6123#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Predict_test_results_combined.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1475">
+          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
         </state>
       </provider>
     </entry>
