@@ -87,13 +87,13 @@ Entrenamiento
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 # Carga modelo
-model = compiled_model('build_clasificator', dim=dim, lr=0.0003, loss='focal_loss')
+model = compiled_model('build_clasificator', dim=dim, lr=0.0001, loss='focal_loss')
 
 #model.load_weights('Redes/weights-train2-05-0.9947.h5')
 
 # checkpoint
 filepath = "weights-trainclass-{epoch:02d}-{val_acc:.4f}.h5"
-checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=False, mode='max')
+checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 callbacks_list = [checkpoint]
 
 # Train model
@@ -102,5 +102,5 @@ history = model.fit_generator(generator=training_generator,
                               validation_data=validation_generator,
                               use_multiprocessing=False,
                               shuffle=True,
-                              epochs=100,
+                              epochs=300,
                               callbacks=callbacks_list)

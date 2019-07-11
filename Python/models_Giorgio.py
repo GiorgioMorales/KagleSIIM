@@ -17,7 +17,7 @@ Custom functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-def focal_loss(y_true, y_pred, gamma=2., alpha=.9):
+def focal_loss(y_true, y_pred, gamma=2., alpha=.75):
 
     pt_1 = tf.where(tf.equal(y_true, 1), y_pred, tf.ones_like(y_pred))
     pt_0 = tf.where(tf.equal(y_true, 0), y_pred, tf.zeros_like(y_pred))
@@ -406,7 +406,7 @@ def build_clasificator(img_shape=(256, 256, 1)):
     first_block_filters = 32
     x = Conv2D(first_block_filters,
                kernel_size=3,
-               strides=(2, 2), padding='same',
+               strides=(1, 1), padding='same',
                use_bias=False, name='Conv')(d0)
     x = BatchNormalization(epsilon=1e-3, momentum=0.999, name='Conv_BN')(x)
     x = Activation(relu6, name='Conv_Relu6')(x)
@@ -428,7 +428,7 @@ def build_clasificator(img_shape=(256, 256, 1)):
     x = _inverted_res_block(x, pointwise_filters=32, stride=1,
                             expansion=6, block_id=5, skip_connection=True)
 
-    x = _inverted_res_block(x, pointwise_filters=64, stride=1,
+    x = _inverted_res_block(x, pointwise_filters=64, stride=2,
                             expansion=6, block_id=6, skip_connection=False)
     x = _inverted_res_block(x, pointwise_filters=64, stride=1,
                             expansion=6, block_id=7, skip_connection=True)
@@ -474,12 +474,13 @@ def build_clasificator(img_shape=(256, 256, 1)):
     """"""""""""""""""""""""""
     """""""""""""""""""""""""""
 
-    x = SeparableConv2D(256, kernel_size=3, strides=(1, 1), padding='same',
+    x = SeparableConv2D(512, kernel_size=3, strides=(2, 2), padding='same',
                         dilation_rate=1, name='decoder_conv0')(x)
-    x = SeparableConv2D(256, kernel_size=3, strides=(2, 2), padding='same',
+    x = SeparableConv2D(512, kernel_size=3, strides=(2, 2), padding='same',
                         dilation_rate=1, name='decoder_conv1')(x)
 
     x = Flatten()(x)
+    x = Dense(512, activation='relu', name='fc' + str(512))(x)
     x = Dense(128, activation='relu', name='fc' + str(128))(x)
     x = Dense(1, activation='sigmoid', name='fc' + str(1))(x)
 
