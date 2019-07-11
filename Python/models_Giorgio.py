@@ -466,7 +466,7 @@ def build_clasificator(img_shape=(256, 256, 1)):
                use_bias=False, name='concat_projection')(x)
     x = BatchNormalization(name='concat_projection_BN', epsilon=1e-5)(x)
     x = Activation('relu')(x)
-    x = Dropout(0.1)(x)
+    x = Dropout(0.3)(x)
 
     """""""""""""""""""""""""""
     """"""""""""""""""""""""""
@@ -480,6 +480,7 @@ def build_clasificator(img_shape=(256, 256, 1)):
                         dilation_rate=1, name='decoder_conv1')(x)
 
     x = Flatten()(x)
+    x = Dropout(0.1)(x)
     x = Dense(512, activation='relu', name='fc' + str(512))(x)
     x = Dense(128, activation='relu', name='fc' + str(128))(x)
     x = Dense(1, activation='sigmoid', name='fc' + str(1))(x)
