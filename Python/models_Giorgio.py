@@ -1,6 +1,6 @@
 
 from keras.layers import Input, Dropout, Concatenate, Flatten, Dense
-from keras.layers import BatchNormalization, Activation
+from keras.layers import BatchNormalization, Activation, GlobalAveragePooling2D
 from keras.layers.convolutional import UpSampling2D, Conv2D, DepthwiseConv2D, SeparableConv2D
 from keras.models import Model
 from keras.optimizers import Adam
@@ -406,7 +406,7 @@ def build_clasificator(img_shape=(256, 256, 1)):
     first_block_filters = 32
     x = Conv2D(first_block_filters,
                kernel_size=3,
-               strides=(1, 1), padding='same',
+               strides=(2, 2), padding='same',
                use_bias=False, name='Conv')(d0)
     x = BatchNormalization(epsilon=1e-3, momentum=0.999, name='Conv_BN')(x)
     x = Activation(relu6, name='Conv_Relu6')(x)
@@ -438,7 +438,7 @@ def build_clasificator(img_shape=(256, 256, 1)):
     ASPP
     """"""""""""""""""""""""""
     """""""""""""""""""""""""""
-    atrous_rates = (3, 6, 9)
+    atrous_rates = (6, 12, 18)
 
     # simple 1x1
     b0 = Conv2D(256, (1, 1), padding='same', use_bias=False, name='aspp0')(x)
@@ -479,10 +479,9 @@ def build_clasificator(img_shape=(256, 256, 1)):
     x = SeparableConv2D(512, kernel_size=3, strides=(2, 2), padding='same',
                         dilation_rate=1, name='decoder_conv1')(x)
 
-    x = Flatten()(x)
+    x = GlobalAveragePooling2D()(x)
     x = Dropout(0.1)(x)
-    x = Dense(512, activation='relu', name='fc' + str(512))(x)
-    x = Dense(128, activation='relu', name='fc' + str(128))(x)
+    x = Dense(64, activation='relu', name='fc' + str(128))(x)
     x = Dense(1, activation='sigmoid', name='fc' + str(1))(x)
 
     return Model(d0, x)
