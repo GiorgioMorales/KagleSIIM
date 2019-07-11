@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="53e77e59-6b94-46c1-a1f2-7505cfaa2b0f" name="Default Changelist" comment="" />
+    <list default="true" id="53e77e59-6b94-46c1-a1f2-7505cfaa2b0f" name="Default Changelist" comment="commit para clasificacion">
+      <change afterPath="$PROJECT_DIR$/Find_best_threshold_classification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Predict_test_results_combined.py" beforeDir="false" afterPath="$PROJECT_DIR$/Predict_test_results_combined.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test_individual_images.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test_individual_images.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/submission.csv" beforeDir="false" afterPath="$PROJECT_DIR$/submission.csv" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,22 +21,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ReadDICOM.py">
+        <entry file="file://$PROJECT_DIR$/dataGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="58" column="22" selection-start-line="53" selection-end-line="62" selection-end-column="85" />
+            <state relative-caret-position="208">
+              <caret line="88" selection-end-line="112" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#59#77#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataGenerator.py">
+        <entry file="file://$PROJECT_DIR$/dataGeneratorclass.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="293">
+              <caret line="106" column="12" selection-start-line="106" selection-start-column="12" selection-end-line="109" selection-end-column="24" />
               <folding>
                 <element signature="e#59#77#0" expanded="true" />
               </folding>
@@ -42,20 +48,12 @@
         <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="19" selection-start-line="19" selection-end-line="29" selection-end-column="123" />
+              <caret line="352" column="4" selection-start-line="352" selection-start-column="4" selection-end-line="352" selection-end-column="22" />
               <folding>
                 <element signature="e#1#53#0" expanded="true" />
                 <element signature="e#2013#7183#0" />
+                <element signature="e#7549#12995#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Train_Giorgio.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="48" selection-start-line="48" selection-end-line="67" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -63,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="177" column="51" selection-start-line="177" selection-start-column="26" selection-end-line="177" selection-end-column="51" />
+            <state relative-caret-position="497">
+              <caret line="229" column="86" selection-start-line="229" selection-start-column="86" selection-end-line="229" selection-end-column="86" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
                 <element signature="e#953#6123#0" />
@@ -74,46 +72,64 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Find_best_threshold.py">
+        <entry file="file://$PROJECT_DIR$/Predict_test_results.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-886">
-              <caret line="39" selection-start-line="39" selection-end-line="39" />
-              <folding>
-                <element signature="e#0#52#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-47">
+              <caret line="67" column="19" lean-forward="true" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Find_best_threshold_classification.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="28" column="48" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Predict_test_results.py">
+        <entry file="file://$PROJECT_DIR$/Predict_test_results_combined.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="105" column="32" selection-end-line="120" />
+            <state relative-caret-position="378">
+              <caret line="134" column="60" lean-forward="true" selection-start-line="134" selection-start-column="60" selection-end-line="134" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Train_Giorgio_Negatives.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="293">
+              <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
               <folding>
-                <element signature="e#1#43#0" expanded="true" />
+                <element signature="e#191#217#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ReadCSV.py">
+        <entry file="file://$PROJECT_DIR$/Train_Giorgio_Clasificacion.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="34" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="34" />
+            <state relative-caret-position="582">
+              <caret line="106" selection-start-line="106" selection-end-line="106" />
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#191#217#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mask_functions.py">
+        <entry file="file://$PROJECT_DIR$/Train_Giorgio.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+            <state relative-caret-position="1496">
+              <caret line="97" selection-start-line="97" selection-end-line="97" />
+              <folding>
+                <element signature="e#191#217#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -133,7 +149,6 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -146,17 +161,21 @@
         <option value="$PROJECT_DIR$/Train_Giorgio.py" />
         <option value="$PROJECT_DIR$/dataGenerator.py" />
         <option value="$PROJECT_DIR$/ReadDICOM.py" />
+        <option value="$PROJECT_DIR$/Predict_test_results.py" />
+        <option value="$PROJECT_DIR$/Find_best_threshold.py" />
         <option value="$PROJECT_DIR$/Train_Giorgio_Negatives.py" />
         <option value="$PROJECT_DIR$/models_Giorgio.py" />
-        <option value="$PROJECT_DIR$/Predict_test_results.py" />
+        <option value="$PROJECT_DIR$/dataGeneratorclass.py" />
+        <option value="$PROJECT_DIR$/Train_Giorgio_Clasificacion.py" />
+        <option value="$PROJECT_DIR$/Find_best_threshold_classification.py" />
         <option value="$PROJECT_DIR$/Test_individual_images.py" />
-        <option value="$PROJECT_DIR$/Find_best_threshold.py" />
+        <option value="$PROJECT_DIR$/Predict_test_results_combined.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-705" />
+    <option name="y" value="136" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -166,6 +185,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -182,7 +202,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -202,12 +221,14 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\DIDT03\KagleSIIM\Python" />
+      <recent name="C:\Users\Giorgio\KagleSIIM\Python" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DIDT03\KagleSIIM\Python\Redes" />
       <recent name="C:\Users\User\KagleSIIM\Python\Redes" />
       <recent name="C:\Users\Giorgio\KagleSIIM\Python\Redes" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Giorgio\KagleSIIM\Python" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -222,21 +243,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Find_best_threshold">
-    <configuration name="Find_best_threshold" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.Predict_test_results_combined">
+    <configuration name="Find_best_threshold_classification" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Kagle" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Find_best_threshold.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Find_best_threshold_classification.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -245,20 +262,16 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Predict_test_results" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Predict_test_results_combined" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Kagle" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Predict_test_results.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Predict_test_results_combined.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -271,15 +284,11 @@
       <module name="Kagle" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test_individual_images.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
@@ -289,20 +298,16 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Train_Giorgio" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Train_Giorgio_Clasificacion" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Kagle" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Train_Giorgio.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Train_Giorgio_Clasificacion.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -315,15 +320,11 @@
       <module name="Kagle" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Train_Giorgio_Negatives.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
@@ -335,11 +336,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Find_best_threshold" />
-        <item itemvalue="Python.Predict_test_results" />
+        <item itemvalue="Python.Predict_test_results_combined" />
+        <item itemvalue="Python.Find_best_threshold_classification" />
+        <item itemvalue="Python.Predict_test_results_combined" />
         <item itemvalue="Python.Test_individual_images" />
-        <item itemvalue="Python.Find_best_threshold" />
-        <item itemvalue="Python.Test_individual_images" />
+        <item itemvalue="Python.Train_Giorgio_Clasificacion" />
       </list>
     </recent_temporary>
   </component>
@@ -443,23 +444,37 @@
       <option name="project" value="LOCAL" />
       <updated>1562643906570</updated>
     </task>
-    <task id="LOCAL-00013" summary="8/07 - inictel2">
-      <created>1562706889163</created>
+    <task id="LOCAL-00013" summary="commit para clasificacion">
+      <created>1562709174512</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1562706889163</updated>
+      <updated>1562709174512</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="commit para clasificacion">
+      <created>1562768000841</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1562768000841</updated>
+    </task>
+    <task id="LOCAL-00015" summary="commit para clasificacion">
+      <created>1562768858528</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1562768858528</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47317000" />
+    <option name="totallyTimeSpent" value="46436000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26332623" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25658587" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -474,7 +489,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32827735" />
-      <window_info anchor="bottom" id="Python Console" order="12" visible="true" weight="0.3582251" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.3726977" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -513,18 +528,8 @@
     <MESSAGE value="6/07" />
     <MESSAGE value="8/07 - inictel" />
     <MESSAGE value="8/07 - inictel2" />
-    <option name="LAST_COMMIT_MESSAGE" value="8/07 - inictel2" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/dataGenerator.py</url>
-          <line>87</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="commit para clasificacion" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit para clasificacion" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -588,20 +593,10 @@
     <entry file="file://$USER_HOME$/giorgioenv/Lib/site-packages/keras/utils/data_utils.py" />
     <entry file="file://$PROJECT_DIR$/ReadDICOM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="58" column="22" selection-start-line="53" selection-end-line="62" selection-end-column="85" />
+        <state relative-caret-position="119">
+          <caret line="14" column="82" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="82" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="e#59#77#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -611,8 +606,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mask_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        <state relative-caret-position="612">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
         </state>
       </provider>
     </entry>
@@ -628,36 +623,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Train_Giorgio.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="48" selection-start-line="48" selection-end-line="67" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Train_Giorgio_Negatives.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="19" selection-start-line="19" selection-end-line="29" selection-end-column="123" />
+        <state relative-caret-position="1496">
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
           <folding>
-            <element signature="e#1#53#0" expanded="true" />
-            <element signature="e#2013#7183#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="177" column="51" selection-start-line="177" selection-start-column="26" selection-end-line="177" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-            <element signature="e#953#6123#0" />
+            <element signature="e#191#217#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -672,13 +641,87 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Train_Giorgio_Negatives.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+          <folding>
+            <element signature="e#191#217#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataGenerator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="88" selection-end-line="112" />
+          <folding>
+            <element signature="e#59#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Train_Giorgio_Clasificacion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="582">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
+          <folding>
+            <element signature="e#191#217#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataGeneratorclass.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="106" column="12" selection-start-line="106" selection-start-column="12" selection-end-line="109" selection-end-column="24" />
+          <folding>
+            <element signature="e#59#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="352" column="4" selection-start-line="352" selection-start-column="4" selection-end-line="352" selection-end-column="22" />
+          <folding>
+            <element signature="e#1#53#0" expanded="true" />
+            <element signature="e#2013#7183#0" />
+            <element signature="e#7549#12995#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Find_best_threshold_classification.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="28" column="48" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="229" column="86" selection-start-line="229" selection-start-column="86" selection-end-line="229" selection-end-column="86" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+            <element signature="e#953#6123#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Predict_test_results.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="105" column="32" selection-end-line="120" />
-          <folding>
-            <element signature="e#1#43#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-47">
+          <caret line="67" column="19" lean-forward="true" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Predict_test_results_combined.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="134" column="60" lean-forward="true" selection-start-line="134" selection-start-column="60" selection-end-line="134" selection-end-column="60" />
         </state>
       </provider>
     </entry>

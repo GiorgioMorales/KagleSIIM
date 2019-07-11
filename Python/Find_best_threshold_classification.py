@@ -1,15 +1,18 @@
-from keras.models import Model, load_model
-from models_Giorgio import compiled_model, focal_loss
+from keras.layers import Input, Dropout, Concatenate
+from keras.layers import BatchNormalization, Activation
+from keras.layers.convolutional import UpSampling2D, Conv2D, DepthwiseConv2D, SeparableConv2D
+from keras.layers import Add
+from keras.models import Model
+from models_Giorgio import compiled_model, focal_loss, dice_coef_metric
 from keras.optimizers import Adam
 import pydicom
 import cv2
 import os
 import glob
 import numpy as np
+import matplotlib.pyplot as plt
+from random import shuffle
 import time
-
-import csv
-from mask_functions import *
 
 import keras.backend as K
 K.set_image_data_format('channels_last')
@@ -23,51 +26,55 @@ Carga modelo
 
 dim = 256
 model = compiled_model('build_clasificator', dim=dim, n_channels = 1, lr = 0.0003, loss = 'focal_loss')
-model.load_weights('weights-trainclass-100-0.8078.h5')
+model.load_weights('weights-trainclass-94-0.8172.h5')
 optimizer = Adam(lr=0.03, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 model.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Carga imágenes test
+Carga imágenes al azar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 basepath = os.getcwd()[:-7]
-orig_path = basepath + '//Test//*.dcm'
+orig_path = basepath + '//Train//*.dcm'
 
 # Obtiene una lista de las direcciones de las imágenes y sus máscaras
 addri = sorted(glob.glob(orig_path))
 
-# Define directorio de máscaras de test
-maskpath = basepath + '//MasksTest//'
-
-dim = 256
+# Reordena aleatoriamente las direcciones por pares
+shuffle(addri)
+#lon = 1000
+dirimages = addri
+maskpath = basepath + '//Masks//'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Carga imágenes 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-ids = []
-
+dim = 256
 images = np.zeros((len(addri), dim, dim, 1), dtype=np.uint8)
+masks = np.zeros((len(addri), 1), dtype=np.float)
 
-for cnt, dir in enumerate(addri):
+for cnt, dir in enumerate(dirimages):
 
     # Lee imagen
     ds = pydicom.read_file(dir)
     img = ds.pixel_array
+    # Dirección de máscara
+    dirm = maskpath + os.path.basename(dir)[:-4] + '.tif'
+    # Lee máscara
+    mask = np.flip(np.rot90(cv2.imread(dirm, 0), 3), 1)
+    if mask.max() == 0:
+        valy = 0
+    else:
+        valy = 1
 
     if dim != 1024:
         img = cv2.resize(img, (dim, dim))
 
     images[cnt,] = np.reshape(img, (dim, dim, 1))
-
-    # Extrar nombre
-    name = os.path.basename(dir)[:-4]
-    ids.append(name)
-
+    masks[cnt,] = valy
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -75,63 +82,47 @@ Predecir
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-pred1 = model.predict(images)
+pred = model.predict(images)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Carga modelo
+Selecciona threshold
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-def relu6(x):
-    return K.relu(x, max_value=6)
+#dice for threshold selection
+def dice_overall(preds, targs):
+    n = preds.shape[0]
+    # preds = preds.view(n, -1)
+    # targs = targs.view(n, -1)
+    # preds = preds.astype('float')
+    # targs = targs.astype('float')
+    intersect = (preds * targs).sum(-1)
+    union = (preds+targs).sum(-1)
+    u0 = union==0
+    intersect[u0] = 1
+    union[u0] = 2
+    return 2. * intersect / union
 
 
-model2 = load_model('Redes/Test2.h5', custom_objects={'relu6': relu6, 'focal_loss': focal_loss})
+thrs = np.arange(110, 180, 1)
+accs = []
+for th in thrs:
+    preds_m = (pred*255 > 128).astype(np.float)
+    acc = np.sum(preds_m*masks) / np.sum(masks)
+    accs.append(acc)
+accs = np.array(accs)
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Predice resultados
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-print('Empieza predicción')
+best_dice = accs.max()
+best_thr = thrs[accs.argmax()]
 
-# with open('persons.csv', 'w') as csvfile:
 #
-#     filewriter = csv.writer(csvfile, delimiter=',')
-#     filewriter.writerow(['ImageID', 'EncodedPixels'])
-rles = []
-
-for cnt, dir in enumerate(addri):
-
-    print(cnt)
-
-    if pred1[cnt] <= 0.4313:
-        mask = np.zeros((1024, 1024))
-    else:
-        pred = np.reshape(model2.predict(np.reshape(images[cnt], (1, dim, dim, 1))), (256, 256))
-        # Delets small objects
-        nb_components, output, stats, centroids = cv2.connectedComponentsWithStats((pred*255 > 140).astype(np.uint8) * 255,
-                                                                                   connectivity=8)
-        sizes = stats[1:, -1]
-        nb_components = nb_components - 1
-        min_size = 70
-        y2 = np.zeros(pred.shape, dtype=np.uint8)
-        for i in range(0, nb_components):
-            if sizes[i] >= min_size:
-                y2[output == i + 1] = 255
-
-        nb_components, _, _, _ = cv2.connectedComponentsWithStats(y2, connectivity=8)
-
-        # Codifica máscara
-        mask = (cv2.resize(y2, (1024, 1024)) > 145).astype(np.uint8) * 255
-
-    rles.append(mask2rle(mask, 1024, 1024))
-
-    # filewriter.writerow([name, rle])
-import pandas as pd
-sub_df = pd.DataFrame({'ImageId': ids, 'EncodedPixels': rles})
-sub_df.loc[sub_df.EncodedPixels=='', 'EncodedPixels'] = '-1'
-sub_df.to_csv('submission2.csv', index=False)
-sub_df.head()
+# import matplotlib.pyplot as plt
+# plt.figure()
+# plt.imshow(((pred*255 > best_thr)).astype(np.float)[197,:,:,0])
+# plt.show()
+#
+# plt.figure()
+# plt.imshow(masks[197,:,:,0])
+# plt.show()
