@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="53e77e59-6b94-46c1-a1f2-7505cfaa2b0f" name="Default Changelist" comment="commit para clasificacion">
       <change beforePath="$PROJECT_DIR$/Find_best_threshold_classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/Find_best_threshold_classification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Train_ChestXNET.py" beforeDir="false" afterPath="$PROJECT_DIR$/Train_ChestXNET.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Predict_test_results_combined.py" beforeDir="false" afterPath="$PROJECT_DIR$/Predict_test_results_combined.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Find_best_threshold_classification.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+            <state relative-caret-position="258">
+              <caret line="87" column="25" selection-start-line="87" selection-start-column="25" selection-end-line="87" selection-end-column="25" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
               </folding>
@@ -50,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Predict_test_results_combined.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="604">
-              <caret line="81" column="24" lean-forward="true" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
+            <state>
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
@@ -162,8 +162,8 @@
         <option value="$PROJECT_DIR$/Test_CheXNet.py" />
         <option value="$PROJECT_DIR$/dataGeneratorclassChestXNET.py" />
         <option value="$PROJECT_DIR$/Find_best_threshold.py" />
-        <option value="$PROJECT_DIR$/Predict_test_results_combined.py" />
         <option value="$PROJECT_DIR$/Train_ChestXNET.py" />
+        <option value="$PROJECT_DIR$/Predict_test_results_combined.py" />
         <option value="$PROJECT_DIR$/Find_best_threshold_classification.py" />
       </list>
     </option>
@@ -479,7 +479,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63644000" />
+    <option name="totallyTimeSpent" value="65425000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -741,20 +741,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Find_best_threshold_classification.py">
+    <entry file="file://$PROJECT_DIR$/Predict_test_results_combined.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
+        <state>
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Predict_test_results_combined.py">
+    <entry file="file://$PROJECT_DIR$/Find_best_threshold_classification.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="604">
-          <caret line="81" column="24" lean-forward="true" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
+        <state relative-caret-position="258">
+          <caret line="87" column="25" selection-start-line="87" selection-start-column="25" selection-end-line="87" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

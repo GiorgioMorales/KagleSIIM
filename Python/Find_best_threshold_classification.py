@@ -46,7 +46,7 @@ addri = sorted(glob.glob(orig_path))
 # Reordena aleatoriamente las direcciones por pares
 shuffle(addri)
 #lon = 1000
-dirimages = addri
+dirimages = addri[:1000]
 maskpath = basepath + '//Masks//'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -54,8 +54,8 @@ maskpath = basepath + '//Masks//'
 Carga imágenes 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-images = np.zeros((len(addri), dim, dim, n_channels), dtype=np.float)
-masks = np.zeros((len(addri), 1), dtype=np.float)
+images = np.zeros((len(dirimages), dim, dim, n_channels), dtype=np.float)
+masks = np.zeros((len(dirimages), 1), dtype=np.float)
 
 for cnt, dir in enumerate(dirimages):
 

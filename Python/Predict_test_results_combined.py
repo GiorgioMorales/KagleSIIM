@@ -22,6 +22,7 @@ Carga modelo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 dim = 256
+n_channels = 3
 # model = compiled_model('build_clasificator', dim=dim, n_channels = 1, lr = 0.0003, loss = 'focal_loss')
 model = load_model('Redes/CheXNet_network_pretrained.h5', custom_objects={'focal_loss':focal_loss})
 model.load_weights('Redes/weights-trainclasschest-10-0.8788.h5')
