@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53e77e59-6b94-46c1-a1f2-7505cfaa2b0f" name="Default Changelist" comment="commit para clasificacion">
+      <change beforePath="$PROJECT_DIR$/.idea/Kagle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Kagle.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Redes/weights-train_negatives-06-0.9973.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Redes/weights-train_negatives-07-0.9976.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Redes/weights-train_negatives-11-0.9963.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models_Giorgio.py" beforeDir="false" afterPath="$PROJECT_DIR$/models_Giorgio.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Redes/CheXNet_network.h5" beforeDir="false" afterPath="$PROJECT_DIR$/Redes/CheXNet_network.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/submission.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/submission2.csv" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,22 +22,58 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ReadDICOM.py">
+        <entry file="file://$PROJECT_DIR$/dataGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="58" column="22" selection-start-line="53" selection-end-line="62" selection-end-column="85" />
+            <state relative-caret-position="529">
+              <caret line="112" selection-start-line="112" selection-end-line="112" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#59#77#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Test_CheXNet.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="24" column="45" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="45" />
+              <folding>
+                <element signature="e#1#36#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dataGenerator.py">
+        <entry file="file://$PROJECT_DIR$/Train_ChestXNET.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="71" selection-start-line="71" selection-end-line="71" />
+            <state relative-caret-position="171">
+              <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
+              <folding>
+                <element signature="e#191#217#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataGeneratorclassChestXNET.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="69" column="58" selection-start-line="69" selection-start-column="58" selection-end-line="69" selection-end-column="58" />
+              <folding>
+                <element signature="e#59#77#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataGeneratorclass.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="106" column="12" selection-start-line="106" selection-start-column="12" selection-end-line="109" selection-end-column="24" />
               <folding>
                 <element signature="e#59#77#0" expanded="true" />
               </folding>
@@ -47,40 +84,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="477" column="34" selection-start-line="477" selection-start-column="34" selection-end-line="477" selection-end-column="34" />
+            <state relative-caret-position="5848">
+              <caret line="494" column="4" selection-start-line="494" selection-start-column="4" selection-end-line="494" selection-end-column="22" />
               <folding>
-                <element signature="e#1#69#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Train_Giorgio_Clasificacion.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="11" selection-end-line="20" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Train_Giorgio.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="48" selection-start-line="48" selection-end-line="67" selection-end-column="71" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Find_best_threshold.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-17">
-              <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#52#0" expanded="true" />
+                <element signature="e#1#53#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -89,29 +96,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Predict_test_results.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1683">
-              <caret line="112" column="32" selection-start-line="112" selection-start-column="32" selection-end-line="112" selection-end-column="32" />
+            <state relative-caret-position="918">
+              <caret line="67" column="19" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ReadCSV.py">
+        <entry file="file://$PROJECT_DIR$/Train_Giorgio_Negatives.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="20" column="34" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="34" />
+            <state relative-caret-position="223">
+              <caret line="104" column="13" lean-forward="true" selection-start-line="99" selection-end-line="104" selection-end-column="13" />
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#191#217#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mask_functions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -152,6 +150,10 @@
         <option value="$PROJECT_DIR$/Train_Giorgio_Clasificacion.py" />
         <option value="$PROJECT_DIR$/models_Giorgio.py" />
         <option value="$PROJECT_DIR$/dataGenerator.py" />
+        <option value="$PROJECT_DIR$/createchex.py" />
+        <option value="$PROJECT_DIR$/Test_CheXNet.py" />
+        <option value="$PROJECT_DIR$/dataGeneratorclassChestXNET.py" />
+        <option value="$PROJECT_DIR$/Train_ChestXNET.py" />
       </list>
     </option>
   </component>
@@ -167,6 +169,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -183,7 +186,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -203,14 +205,14 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\DIDT03\KagleSIIM\Python" />
-      <recent name="C:\Users\Giorgio\KagleSIIM\Python" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\DIDT03\KagleSIIM\Python\Redes" />
       <recent name="C:\Users\User\KagleSIIM\Python\Redes" />
       <recent name="C:\Users\Giorgio\KagleSIIM\Python\Redes" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Giorgio\KagleSIIM\Python" />
+      <recent name="C:\Users\DIDT03\KagleSIIM\Python" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -225,21 +227,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Train_Giorgio_Clasificacion">
-    <configuration name="Find_best_threshold_classification" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.Train_ChestXNET">
+    <configuration name="Test_CheXNet" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Kagle" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Find_best_threshold_classification.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test_CheXNet.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -248,20 +246,16 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Predict_test_results_combined" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Train_ChestXNET" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Kagle" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Predict_test_results_combined.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Train_ChestXNET.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -274,6 +268,9 @@
       <module name="Kagle" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -315,6 +312,9 @@
       <module name="Kagle" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -332,11 +332,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Train_Giorgio_Clasificacion" />
-        <item itemvalue="Python.models_Giorgio" />
-        <item itemvalue="Python.Train_Giorgio_Clasificacion" />
-        <item itemvalue="Python.Predict_test_results_combined" />
-        <item itemvalue="Python.Find_best_threshold_classification" />
+        <item itemvalue="Python.Train_ChestXNET" />
+        <item itemvalue="Python.Test_CheXNet" />
+        <item itemvalue="Python.Train_ChestXNET" />
+        <item itemvalue="Python.Test_CheXNet" />
+        <item itemvalue="Python.Test_CheXNet" />
       </list>
     </recent_temporary>
   </component>
@@ -469,9 +469,10 @@
     <option name="totallyTimeSpent" value="54482000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26865673" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2559524" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -486,7 +487,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32827735" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.66450214" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.5302782" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -591,26 +592,6 @@
     <entry file="file://$PROJECT_DIR$/persons.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Train_Giorgio_Negatives.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
-          <folding>
-            <element signature="e#191#217#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataGeneratorclass.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="106" column="12" selection-start-line="106" selection-start-column="12" selection-end-line="109" selection-end-column="24" />
-          <folding>
-            <element signature="e#59#77#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Find_best_threshold_classification.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -622,16 +603,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="134" column="60" lean-forward="true" selection-start-line="134" selection-start-column="60" selection-end-line="134" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="8" lean-forward="true" selection-start-line="9" selection-end-line="13" selection-end-column="26" />
-          <folding>
-            <element signature="e#953#6123#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -647,15 +618,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Train_Giorgio.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="48" selection-start-line="48" selection-end-line="67" selection-end-column="71" />
+        <state relative-caret-position="1496">
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
+          <folding>
+            <element signature="e#191#217#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Predict_test_results.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1683">
-          <caret line="112" column="32" selection-start-line="112" selection-start-column="32" selection-end-line="112" selection-end-column="32" />
+        <state relative-caret-position="918">
+          <caret line="67" column="19" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -678,18 +652,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="477" column="34" selection-start-line="477" selection-start-column="34" selection-end-line="477" selection-end-column="34" />
+        <state relative-caret-position="5848">
+          <caret line="494" column="4" selection-start-line="494" selection-start-column="4" selection-end-line="494" selection-end-column="22" />
           <folding>
-            <element signature="e#1#69#0" expanded="true" />
+            <element signature="e#1#53#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Train_Giorgio_Clasificacion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="11" selection-end-line="20" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -705,10 +672,88 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dataGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
+        <state relative-caret-position="529">
+          <caret line="112" selection-start-line="112" selection-end-line="112" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test_individual_images.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="219" column="43" selection-start-line="197" selection-end-line="219" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+            <element signature="e#953#6123#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataGeneratorclass.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="106" column="12" selection-start-line="106" selection-start-column="12" selection-end-line="109" selection-end-column="24" />
+          <folding>
+            <element signature="e#59#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/createchex.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="55" selection-end-line="5" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Train_Giorgio_Clasificacion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="51" lean-forward="true" selection-end-line="106" />
+          <folding>
+            <element signature="e#191#217#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test_CheXNet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="24" column="45" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="45" />
+          <folding>
+            <element signature="e#1#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Train_Giorgio_Negatives.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="104" column="13" lean-forward="true" selection-start-line="99" selection-end-line="104" selection-end-column="13" />
+          <folding>
+            <element signature="e#191#217#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataGeneratorclassChestXNET.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="69" column="58" selection-start-line="69" selection-start-column="58" selection-end-line="69" selection-end-column="58" />
+          <folding>
+            <element signature="e#59#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Train_ChestXNET.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
+          <folding>
+            <element signature="e#191#217#0" expanded="true" />
           </folding>
         </state>
       </provider>
