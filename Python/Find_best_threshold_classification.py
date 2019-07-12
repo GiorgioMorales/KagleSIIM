@@ -25,6 +25,7 @@ Carga modelo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 dim = 256
+n_channels = 3
 # model = compiled_model('build_clasificator', dim=dim, n_channels = 1, lr = 0.0003, loss = 'focal_loss')
 model = load_model('Redes/CheXNet_network_pretrained.h5', custom_objects={'focal_loss':focal_loss})
 model.load_weights('Redes/weights-trainclasschest-10-0.8788.h5')
@@ -53,7 +54,7 @@ maskpath = basepath + '//Masks//'
 Carga imágenes 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-images = np.zeros((len(addri), dim, dim, 1), dtype=np.uint8)
+images = np.zeros((len(addri), dim, dim, n_channels), dtype=np.float)
 masks = np.zeros((len(addri), 1), dtype=np.float)
 
 for cnt, dir in enumerate(dirimages):
@@ -61,6 +62,8 @@ for cnt, dir in enumerate(dirimages):
     # Lee imagen
     ds = pydicom.read_file(dir)
     img = ds.pixel_array
+    if n_channels == 3:
+        img = cv2.merge([img, img, img])
     # Dirección de máscara
     dirm = maskpath + os.path.basename(dir)[:-4] + '.tif'
     # Lee máscara
@@ -73,7 +76,7 @@ for cnt, dir in enumerate(dirimages):
     if dim != 1024:
         img = cv2.resize(img, (dim, dim))
 
-    images[cnt,] = np.reshape(img, (dim, dim, 1))
+    images[cnt,] = np.reshape(img, (dim, dim, n_channels))/255.
     masks[cnt,] = valy
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

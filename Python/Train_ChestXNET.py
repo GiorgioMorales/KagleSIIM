@@ -13,7 +13,7 @@ import os
 from keras.applications.densenet import DenseNet121
 from keras.optimizers import Adam
 from keras.callbacks import ModelCheckpoint
-from keras.layers import Dense, GlobalAveragePooling2D
+from keras.layers import Dense, GlobalAveragePooling2D, Dropout
 from keras.models import load_model, Model
 from models_Giorgio import compiled_model, focal_loss
 
@@ -101,20 +101,21 @@ def copyModel2Model(model_source, model_target, certain_layer=""):
             break
     print("se copiaron los pesos")
 
-# # Construye una DenseNet121 con una salida sigmoid
-# model = DenseNet121(include_top=False, weights=None, input_tensor=None,
-#                     input_shape=(256, 256, 3), pooling=None, classes=1)
-# y = model.get_layer('relu').output
-# y = GlobalAveragePooling2D()(y)
-# y = Dense(1, activation='sigmoid', name='Prediction')(y)
-# model2 = Model(inputs=model.input, outputs=y)
-#
-# # Copia los pesos de la red pre-entrenada
-# model_base = load_model('Redes/CheXNet_network.h5', custom_objects={'focal_loss': focal_loss})
-# copyModel2Model(model_base, model, "pool4_pool")
+# Construye una DenseNet121 con una salida sigmoid
+model = DenseNet121(include_top=False, weights=None, input_tensor=None,
+                    input_shape=(256, 256, 3), pooling=None, classes=1)
+y = model.get_layer('relu').output
+y = Dropout(0.3)(y)
+y = GlobalAveragePooling2D()(y)
+y = Dense(1, activation='sigmoid', name='Prediction')(y)
+model2 = Model(inputs=model.input, outputs=y)
+
+# Copia los pesos de la red pre-entrenada
+model_base = load_model('Redes/CheXNet_network.h5', custom_objects={'focal_loss': focal_loss})
+copyModel2Model(model_base, model, "conv5_block16_concat") #pool4_pool
 
 # Carga la red
-model2 = load_model('Redes/')
+# model2 = load_model('Redes/')
 
 # Compila la red
 optimizer = Adam(lr=0.0003, beta_1=0.9, beta_2=0.999, epsilon=1e-08)

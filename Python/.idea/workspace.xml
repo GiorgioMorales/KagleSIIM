@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53e77e59-6b94-46c1-a1f2-7505cfaa2b0f" name="Default Changelist" comment="commit para clasificacion">
-      <change beforePath="$PROJECT_DIR$/.idea/Kagle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Kagle.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Find_best_threshold.py" beforeDir="false" afterPath="$PROJECT_DIR$/Find_best_threshold.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Find_best_threshold_classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/Find_best_threshold_classification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Predict_test_results_combined.py" beforeDir="false" afterPath="$PROJECT_DIR$/Predict_test_results_combined.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Redes/Test3.h5" beforeDir="false" afterPath="$PROJECT_DIR$/Redes/Test3.h5" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Train_ChestXNET.py" beforeDir="false" afterPath="$PROJECT_DIR$/Train_ChestXNET.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,11 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Train_ChestXNET.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="118" column="16" selection-start-line="118" selection-start-column="16" selection-end-line="118" selection-end-column="16" />
-              <folding>
-                <element signature="e#191#217#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-153">
+              <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -50,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Find_best_threshold_classification.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="55" selection-start-line="55" selection-end-line="55" />
+            <state relative-caret-position="111">
+              <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
               </folding>
@@ -62,8 +53,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Predict_test_results_combined.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+            <state relative-caret-position="604">
+              <caret line="81" column="24" lean-forward="true" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -92,8 +83,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataGeneratorclassChestXNET.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="69" column="58" selection-start-line="69" selection-start-column="58" selection-end-line="69" selection-end-column="58" />
+            <state relative-caret-position="459">
+              <caret line="112" column="23" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="23" />
               <folding>
                 <element signature="e#59#77#0" expanded="true" />
               </folding>
@@ -170,10 +161,10 @@
         <option value="$PROJECT_DIR$/createchex.py" />
         <option value="$PROJECT_DIR$/Test_CheXNet.py" />
         <option value="$PROJECT_DIR$/dataGeneratorclassChestXNET.py" />
-        <option value="$PROJECT_DIR$/Train_ChestXNET.py" />
-        <option value="$PROJECT_DIR$/Find_best_threshold_classification.py" />
         <option value="$PROJECT_DIR$/Find_best_threshold.py" />
         <option value="$PROJECT_DIR$/Predict_test_results_combined.py" />
+        <option value="$PROJECT_DIR$/Train_ChestXNET.py" />
+        <option value="$PROJECT_DIR$/Find_best_threshold_classification.py" />
       </list>
     </option>
   </component>
@@ -488,11 +479,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61519000" />
+    <option name="totallyTimeSpent" value="63644000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26865673" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -697,16 +687,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataGeneratorclassChestXNET.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="69" column="58" selection-start-line="69" selection-start-column="58" selection-end-line="69" selection-end-column="58" />
-          <folding>
-            <element signature="e#59#77#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataGeneratorclass.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="383">
@@ -723,26 +703,6 @@
           <caret line="481" column="4" selection-start-line="481" selection-start-column="4" selection-end-line="481" selection-end-column="35" />
           <folding>
             <element signature="e#1#69#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Train_ChestXNET.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="118" column="16" selection-start-line="118" selection-start-column="16" selection-end-line="118" selection-end-column="16" />
-          <folding>
-            <element signature="e#191#217#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Find_best_threshold_classification.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -764,10 +724,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dataGeneratorclassChestXNET.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="112" column="23" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="23" />
+          <folding>
+            <element signature="e#59#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Train_ChestXNET.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153">
+          <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Find_best_threshold_classification.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Predict_test_results_combined.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+        <state relative-caret-position="604">
+          <caret line="81" column="24" lean-forward="true" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
         </state>
       </provider>
     </entry>
