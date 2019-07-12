@@ -13,7 +13,8 @@ import os
 from keras.applications.densenet import DenseNet121
 from keras.optimizers import Adam
 from keras.callbacks import ModelCheckpoint
-from keras.models import load_model
+from keras.layers import Dense, GlobalAveragePooling2D
+from keras.models import load_model, Model
 from models_Giorgio import compiled_model, focal_loss
 
 from dataGeneratorclassChestXNET import DataGenerator
@@ -51,7 +52,7 @@ val_origin = addri[int(0.9 * len(addri)):]
 # Parametros para la generación de data
 path = basepath + '//Train'
 maskpath = basepath + '//Masks'
-n_channels = 3
+n_channels = 1
 dim = 256
 params = {'dim': dim,
           'batch_size': 8,
@@ -89,7 +90,7 @@ Entrenamiento
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
+# Define función para copiar layers
 def copyModel2Model(model_source, model_target, certain_layer=""):
     for l_tg, l_sr in zip(model_target.layers, model_source.layers):
         wk0 = l_sr.get_weights()
@@ -100,38 +101,36 @@ def copyModel2Model(model_source, model_target, certain_layer=""):
             break
     print("se copiaron los pesos")
 
+# # Construye una DenseNet121 con una salida sigmoid
+# model = DenseNet121(include_top=False, weights=None, input_tensor=None,
+#                     input_shape=(256, 256, 3), pooling=None, classes=1)
+# y = model.get_layer('relu').output
+# y = GlobalAveragePooling2D()(y)
+# y = Dense(1, activation='sigmoid', name='Prediction')(y)
+# model2 = Model(inputs=model.input, outputs=y)
+#
+# # Copia los pesos de la red pre-entrenada
+# model_base = load_model('Redes/CheXNet_network.h5', custom_objects={'focal_loss': focal_loss})
+# copyModel2Model(model_base, model, "pool4_pool")
 
-model = DenseNet121(include_top=True, weights=None, input_tensor=None,
-                    input_shape=(256, 256, 3), pooling=None, classes=1)
+# Carga la red
+model2 = load_model('Redes/')
 
-model_base = load_model('Redes/CheXNet_network.h5', custom_objects={'focal_loss': focal_loss})
-
-copyModel2Model(model_base, model, "pool4_pool")
-
-# Bloquea el entrenamiento desde la primera capa hasta la capa "block5_pool"
-for layer in model.layers:
-    layer.trainable = False
-    if layer.name == 'pool4_pool':
-        print('Stop freezing layers')
-        break
-
+# Compila la red
 optimizer = Adam(lr=0.0003, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
-model.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
-
-
-model.summary()
-
-
-# checkpoint
-filepath = "weights-trainclasschest-{epoch:02d}-{val_acc:.4f}.h5"
-checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
-callbacks_list = [checkpoint]
-
-# Train model
-print("Empieza entrenamiento...")
-history = model.fit_generator(generator=training_generator,
-                              validation_data=validation_generator,
-                              use_multiprocessing=False,
-                              shuffle=True,
-                              epochs=300,
-                              callbacks=callbacks_list)
+model2.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
+model2.summary()
+#
+# # checkpoint
+# filepath = "weights-trainclasschest-{epoch:02d}-{val_acc:.4f}.h5"
+# checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
+# callbacks_list = [checkpoint]
+#
+# # Train model
+# print("Empieza entrenamiento...")
+# history = model2.fit_generator(generator=training_generator,
+#                               validation_data=validation_generator,
+#                               use_multiprocessing=False,
+#                               shuffle=True,
+#                               epochs=300,
+#                               callbacks=callbacks_list)

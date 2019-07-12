@@ -2,7 +2,7 @@ from keras.layers import Input, Dropout, Concatenate
 from keras.layers import BatchNormalization, Activation
 from keras.layers.convolutional import UpSampling2D, Conv2D, DepthwiseConv2D, SeparableConv2D
 from keras.layers import Add
-from keras.models import Model
+from keras.models import Model, load_model
 from models_Giorgio import compiled_model, focal_loss, dice_coef_metric
 from keras.optimizers import Adam
 import pydicom
@@ -25,9 +25,10 @@ Carga modelo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 dim = 256
-model = compiled_model('build_clasificator', dim=dim, n_channels = 1, lr = 0.0003, loss = 'focal_loss')
-model.load_weights('weights-trainclass-94-0.8172.h5')
-optimizer = Adam(lr=0.03, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
+# model = compiled_model('build_clasificator', dim=dim, n_channels = 1, lr = 0.0003, loss = 'focal_loss')
+model = load_model('Redes/CheXNet_network_pretrained.h5', custom_objects={'focal_loss':focal_loss})
+model.load_weights('Redes/weights-trainclasschest-10-0.8788.h5')
+optimizer = Adam(lr=0.0003, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 model.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -52,7 +53,6 @@ maskpath = basepath + '//Masks//'
 Carga imágenes 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-dim = 256
 images = np.zeros((len(addri), dim, dim, 1), dtype=np.uint8)
 masks = np.zeros((len(addri), 1), dtype=np.float)
 

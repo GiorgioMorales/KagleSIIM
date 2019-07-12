@@ -22,9 +22,10 @@ Carga modelo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 dim = 256
-model = compiled_model('build_clasificator', dim=dim, n_channels = 1, lr = 0.0003, loss = 'focal_loss')
-model.load_weights('weights-trainclass-100-0.8078.h5')
-optimizer = Adam(lr=0.03, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
+# model = compiled_model('build_clasificator', dim=dim, n_channels = 1, lr = 0.0003, loss = 'focal_loss')
+model = load_model('Redes/CheXNet_network_pretrained.h5', custom_objects={'focal_loss':focal_loss})
+model.load_weights('Redes/weights-trainclasschest-10-0.8788.h5')
+optimizer = Adam(lr=0.0003, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 model.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -41,8 +42,6 @@ addri = sorted(glob.glob(orig_path))
 
 # Define directorio de máscaras de test
 maskpath = basepath + '//MasksTest//'
-
-dim = 256
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -88,7 +87,7 @@ def relu6(x):
     return K.relu(x, max_value=6)
 
 
-model2 = load_model('Redes/Test2.h5', custom_objects={'relu6': relu6, 'focal_loss': focal_loss})
+model2 = load_model('Redes/Test3.h5', custom_objects={'relu6': relu6, 'focal_loss': focal_loss})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
