@@ -109,16 +109,15 @@ def dice_overall(preds, targs):
     return 2. * intersect / union
 
 
-thrs = np.arange(110, 180, 1)
+thrs = np.arange(120, 160, 1)
 accs = []
+negs = []
 for th in thrs:
-    preds_m = (pred*255 > 128).astype(np.float)
-    acc = np.sum(preds_m*masks) / np.sum(masks)
-    accs.append(acc)
+    accs.append(np.mean((pred * 255 > th) == masks))
 accs = np.array(accs)
 
-best_dice = accs.max()
-best_thr = thrs[accs.argmax()]
+best_acc = accs.max()
+best_thr_acc = thrs[accs.argmax()]
 
 #
 # import matplotlib.pyplot as plt

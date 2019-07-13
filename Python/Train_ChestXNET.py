@@ -52,10 +52,10 @@ val_origin = addri[int(0.9 * len(addri)):]
 # Parametros para la generación de data
 path = basepath + '//Train'
 maskpath = basepath + '//Masks'
-n_channels = 1
+n_channels = 3
 dim = 256
 params = {'dim': dim,
-          'batch_size': 8,
+          'batch_size': 12,
           'n_channels': n_channels,
           'path': path,
           'maskpath': maskpath,
@@ -101,11 +101,12 @@ def copyModel2Model(model_source, model_target, certain_layer=""):
             break
     print("se copiaron los pesos")
 
+
 # Construye una DenseNet121 con una salida sigmoid
 model = DenseNet121(include_top=False, weights=None, input_tensor=None,
                     input_shape=(256, 256, 3), pooling=None, classes=1)
 y = model.get_layer('relu').output
-y = Dropout(0.3)(y)
+y = Dropout(0.1)(y)
 y = GlobalAveragePooling2D()(y)
 y = Dense(1, activation='sigmoid', name='Prediction')(y)
 model2 = Model(inputs=model.input, outputs=y)
@@ -118,20 +119,20 @@ copyModel2Model(model_base, model, "conv5_block16_concat") #pool4_pool
 # model2 = load_model('Redes/')
 
 # Compila la red
-optimizer = Adam(lr=0.0003, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
+optimizer = Adam(lr=0.0001, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 model2.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
 model2.summary()
-#
-# # checkpoint
-# filepath = "weights-trainclasschest-{epoch:02d}-{val_acc:.4f}.h5"
-# checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
-# callbacks_list = [checkpoint]
-#
-# # Train model
-# print("Empieza entrenamiento...")
-# history = model2.fit_generator(generator=training_generator,
-#                               validation_data=validation_generator,
-#                               use_multiprocessing=False,
-#                               shuffle=True,
-#                               epochs=300,
-#                               callbacks=callbacks_list)
+
+# checkpoint
+filepath = "weights-trainclasschest-{epoch:02d}-{val_acc:.4f}.h5"
+checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
+callbacks_list = [checkpoint]
+
+# Train model
+print("Empieza entrenamiento...")
+history = model2.fit_generator(generator=training_generator,
+                              validation_data=validation_generator,
+                              use_multiprocessing=False,
+                              shuffle=True,
+                              epochs=300,
+                              callbacks=callbacks_list)

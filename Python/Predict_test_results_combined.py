@@ -51,18 +51,20 @@ Carga imágenes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ids = []
 
-images = np.zeros((len(addri), dim, dim, 1), dtype=np.uint8)
+images = np.zeros((len(addri), dim, dim, n_channels), dtype=np.float)
 
 for cnt, dir in enumerate(addri):
 
     # Lee imagen
     ds = pydicom.read_file(dir)
     img = ds.pixel_array
+    if n_channels == 3:
+        img = cv2.merge([img, img, img])
 
     if dim != 1024:
         img = cv2.resize(img, (dim, dim))
 
-    images[cnt,] = np.reshape(img, (dim, dim, 1))
+    images[cnt, ] = np.reshape(img, (dim, dim, n_channels)) / 255.
 
     # Extrar nombre
     name = os.path.basename(dir)[:-4]
@@ -107,10 +109,10 @@ for cnt, dir in enumerate(addri):
 
     print(cnt)
 
-    if pred1[cnt] <= 0.4313:
+    if pred1[cnt] <= 0.4941:
         mask = np.zeros((1024, 1024))
     else:
-        pred = np.reshape(model2.predict(np.reshape(images[cnt], (1, dim, dim, 1))), (256, 256))
+        pred = np.reshape(model2.predict(np.reshape(images[cnt][:, :, 0] * 255, (1, dim, dim, 1))), (256, 256))
         # Delets small objects
         nb_components, output, stats, centroids = cv2.connectedComponentsWithStats((pred*255 > 140).astype(np.uint8) * 255,
                                                                                    connectivity=8)

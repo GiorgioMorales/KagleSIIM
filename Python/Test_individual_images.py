@@ -227,7 +227,7 @@ for cnt, dir in enumerate(dirimages):
     print(end - st)
 
     # Delets small objects
-    nb_components, output, stats, centroids = cv2.connectedComponentsWithStats((y > 180).astype(np.uint8)*255, connectivity=8)
+    nb_components, output, stats, centroids = cv2.connectedComponentsWithStats((y > 145).astype(np.uint8)*255, connectivity=8)
     sizes = stats[1:, -1]
     nb_components = nb_components - 1
     min_size = 70
