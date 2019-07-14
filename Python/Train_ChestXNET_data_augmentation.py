@@ -156,6 +156,9 @@ def DataAugmentation(basepath = "./KagleSIIM", dim=1024):
       #img_5, mask_5 = zoom(img_f, mask_f, 5)
       #cv2.imwrite("{0}{1}_fz5.jpg".format(path_data_output,data_id), img_5)
       #cv2.imwrite("{0}{1}_fz5.jpg".format(path_mask_output,data_id), mask_5)
+    else:
+      cv2.imwrite("{0}{1}_original.jpg".format(path_data_output,data_id), img)
+      cv2.imwrite("{0}{1}_original.jpg".format(path_mask_output,data_id), mask)
       
 
 def Train_model():
