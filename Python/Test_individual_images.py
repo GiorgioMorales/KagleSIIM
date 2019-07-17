@@ -175,7 +175,7 @@ def build_generator1(img_shape=(1024, 1024, 1)):
 
 dim = 256
 model = compiled_model('build_generator2', dim=dim, n_channels = 1, lr = 0.0003, loss = 'focal_loss')
-model.load_weights('Redes/weights-train1-200-0.9843.h5')
+model.load_weights('Redes/weightsloss.h5')
 optimizer = Adam(lr=0.03, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 model.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
 
@@ -185,7 +185,7 @@ Carga imágenes al azar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 basepath = os.getcwd()[:-7]
-orig_path = basepath + '//TrainO//*.dcm'
+orig_path = basepath + '2//TrainA//*.jpg'
 
 # Obtiene una lista de las direcciones de las imágenes y sus máscaras
 addri = sorted(glob.glob(orig_path))
@@ -194,7 +194,7 @@ addri = sorted(glob.glob(orig_path))
 shuffle(addri)
 
 dirimages = addri[0:10]
-maskpath = basepath + '//MasksO//'
+maskpath = basepath + '2//MasksA//'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -206,12 +206,11 @@ fig, axs = plt.subplots(3, 10)
 for cnt, dir in enumerate(dirimages):
 
     # Lee imagen
-    ds = pydicom.read_file(dir)
-    img = ds.pixel_array
+    img = cv2.imread(dir, 0)
     #clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(16, 16))
     #img = (clahe.apply(img)).astype(np.uint8)
     # Dirección de máscara
-    dirm = maskpath + os.path.basename(dir)[:-4] + '.tif'
+    dirm = maskpath + os.path.basename(dir)[:-4] + '.jpg'
     # Lee máscara
     mask = np.flip(np.rot90(cv2.imread(dirm, 0), 3), 1)
 
@@ -227,7 +226,7 @@ for cnt, dir in enumerate(dirimages):
     print(end - st)
 
     # Delets small objects
-    nb_components, output, stats, centroids = cv2.connectedComponentsWithStats((y > 145).astype(np.uint8)*255, connectivity=8)
+    nb_components, output, stats, centroids = cv2.connectedComponentsWithStats((y).astype(np.uint8), connectivity=8)
     sizes = stats[1:, -1]
     nb_components = nb_components - 1
     min_size = 70

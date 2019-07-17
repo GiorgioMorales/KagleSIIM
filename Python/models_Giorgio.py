@@ -17,7 +17,7 @@ Custom functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-def focal_loss(y_true, y_pred, gamma=2., alpha=.75):
+def focal_loss(y_true, y_pred, gamma=2., alpha=.9):
 
     pt_1 = tf.where(tf.equal(y_true, 1), y_pred, tf.ones_like(y_pred))
     pt_0 = tf.where(tf.equal(y_true, 0), y_pred, tf.zeros_like(y_pred))
@@ -29,9 +29,8 @@ def focal_loss(y_true, y_pred, gamma=2., alpha=.75):
 
     return -K.sum(alpha * K.pow(1. - pt_1, gamma) * K.log(pt_1)) - K.sum((1-alpha) * K.pow(pt_0, gamma) * K.log(1. - pt_0))
 
-
 def tversky_loss(y_true, y_pred, beta = 0.8):
-
+    
     numerator = tf.reduce_sum(y_true * y_pred)
     denominator = y_true * y_pred + beta * (1 - y_true) * y_pred + (1 - beta) * y_true * (1 - y_pred)
 
@@ -39,9 +38,9 @@ def tversky_loss(y_true, y_pred, beta = 0.8):
 
 
 def dice_coef(y_true, y_pred, smooth=K.epsilon()):
-    intersection = K.abs(y_true * y_pred)
-    dice_b = (2. * intersection + smooth) / (K.square(y_true) + K.square(y_pred) + smooth)
-    return K.mean(dice_b)
+    numerator = 2 * tf.reduce_sum(y_true * y_pred)
+    denominator = tf.reduce_sum(y_true + tf.square(y_pred))
+    return numerator / (denominator + tf.keras.backend.epsilon())
 
 def dice_coef_metric(y_true, y_pred):
 
@@ -50,6 +49,8 @@ def dice_coef_metric(y_true, y_pred):
     intersection = K.sum(K.cast(tf.math.logical_and(y_true, y_pred), dtype = tf.float32), axis=[1, 2, 3])
     union = K.sum(K.cast(tf.math.logical_or(y_true, y_pred), dtype = tf.float32), axis=[1, 2, 3])
     dicev = (2. * intersection + K.epsilon()) / (union + intersection + K.epsilon())
+
+    return K.mean(dicev)
 
 def dice_coef_loss(y_true, y_pred):
     return 1-dice_coef(y_true, y_pred)
@@ -411,7 +412,7 @@ def build_clasificator(img_shape=(256, 256, 1)):
     first_block_filters = 32
     x = Conv2D(first_block_filters,
                kernel_size=3,
-               strides=(2, 2), padding='same',
+               strides=(1, 1), padding='same',
                use_bias=False, name='Conv')(d0)
     x = BatchNormalization(epsilon=1e-3, momentum=0.999, name='Conv_BN')(x)
     x = Activation(relu6, name='Conv_Relu6')(x)
@@ -486,7 +487,7 @@ def build_clasificator(img_shape=(256, 256, 1)):
 
     x = GlobalAveragePooling2D()(x)
     x = Dropout(0.1)(x)
-    x = Dense(64, activation='relu', name='fc' + str(128))(x)
+    x = Dense(128, activation='relu', name='fc' + str(128))(x)
     x = Dense(1, activation='sigmoid', name='fc' + str(1))(x)
 
     return Model(d0, x)

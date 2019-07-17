@@ -82,7 +82,7 @@ class DataGenerator(keras.utils.Sequence):
                 img = ds.pixel_array
             else:
                 # Lee imagen JPG
-                img = cv2.imread(cv2.imread(addr, 0))
+                img = cv2.imread(addr, 0)
 
             # Añade CLAHE (Contrast Limited Adaptive Histogram Equalization)
             # clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(16, 16))
@@ -102,8 +102,8 @@ class DataGenerator(keras.utils.Sequence):
             mask2 = np.reshape((mask / 255), (self.dim, self.dim, 1))
 
             # Añade variación aleatoria de color a cada canal
-            # img2, mask2 = self.randomflip(img2, mask2)
-            # img2, mask2 = self.randomzoom(img2, mask2, 5)
+            img2, mask2 = self.randomflip(img2, mask2)
+            img2, mask2 = self.randomzoom(img2, mask2, 5)
 
             # basepath = os.getcwd()[:-7]
             # cv2.imwrite(basepath + '//Pruebas//' + os.path.basename(addr)[:-4] + "_orig.png", img2)
