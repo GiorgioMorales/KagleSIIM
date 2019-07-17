@@ -33,7 +33,7 @@ basepath = os.getcwd()[:-7]
 
 # Obtiene listas de imágenes de entrenamiento, valdiación y test
 shuffle_data = True
-orig_path = basepath + '//TrainO//*.dcm'
+orig_path = basepath + '//TrainA//*.jpg'
 
 # Obtiene una lista de las direcciones de las imágenes y sus máscaras
 addri = sorted(glob.glob(orig_path))
@@ -47,8 +47,8 @@ train_origin = addri[0:int(0.9 * len(addri))]
 val_origin = addri[int(0.9 * len(addri)):]
 
 # Parametros para la generación de data
-path = basepath + '//TrainO'
-maskpath = basepath + '//MasksO'
+path = basepath + '//TrainA'
+maskpath = basepath + '//MasksA'
 n_channels = 1
 dim = 256
 params = {'dim': dim,
@@ -87,7 +87,7 @@ Entrenamiento
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 # Carga modelo
-model = compiled_model('build_generator2', dim=dim, lr=0.0003, loss='focal_loss')
+model = compiled_model('build_generator2', dim=dim, lr=0.0001, loss='tversky_loss')
 
 #model.load_weights('Redes/weights-train2-05-0.9947.h5')
 

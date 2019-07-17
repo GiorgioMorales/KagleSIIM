@@ -30,21 +30,26 @@ def focal_loss(y_true, y_pred, gamma=2., alpha=.75):
     return -K.sum(alpha * K.pow(1. - pt_1, gamma) * K.log(pt_1)) - K.sum((1-alpha) * K.pow(pt_0, gamma) * K.log(1. - pt_0))
 
 
-def dice_coef(y_true, y_pred, smooth=1):
-    """
-    Dice = (2*|X & Y|)/ (|X|+ |Y|)
-         =  2*sum(|A*B|)/(sum(A^2)+sum(B^2))
-    ref: https://arxiv.org/pdf/1606.04797v1.pdf
-    """
-    intersection = K.sum(K.abs(y_true * y_pred), axis=-1)
-    return (2. * intersection + smooth) / (K.sum(K.square(y_true),-1) + K.sum(K.square(y_pred),-1) + smooth)
+def tversky_loss(y_true, y_pred, beta = 0.8):
+
+    numerator = tf.reduce_sum(y_true * y_pred)
+    denominator = y_true * y_pred + beta * (1 - y_true) * y_pred + (1 - beta) * y_true * (1 - y_pred)
+
+    return numerator / (tf.reduce_sum(denominator) + tf.keras.backend.epsilon())
 
 
-def dice_coef_metric(y_true, y_pred, smooth=1):
-    y_true_f = K.flatten(y_true)
-    y_pred_f = K.flatten(y_pred)
-    intersection = K.sum(y_true_f * y_pred_f)
-    return (2. * intersection + smooth) / (K.sum(y_true_f) + K.sum(y_pred_f) + smooth)
+def dice_coef(y_true, y_pred, smooth=K.epsilon()):
+    intersection = K.abs(y_true * y_pred)
+    dice_b = (2. * intersection + smooth) / (K.square(y_true) + K.square(y_pred) + smooth)
+    return K.mean(dice_b)
+
+def dice_coef_metric(y_true, y_pred):
+
+    y_pred = K.greater_equal(y_pred, 0.5)
+    y_true = K.greater_equal(y_true, 0.5)
+    intersection = K.sum(K.cast(tf.math.logical_and(y_true, y_pred), dtype = tf.float32), axis=[1, 2, 3])
+    union = K.sum(K.cast(tf.math.logical_or(y_true, y_pred), dtype = tf.float32), axis=[1, 2, 3])
+    dicev = (2. * intersection + K.epsilon()) / (union + intersection + K.epsilon())
 
 def dice_coef_loss(y_true, y_pred):
     return 1-dice_coef(y_true, y_pred)
@@ -501,6 +506,6 @@ def compiled_model (modelname = 'build_generator1', dim =1024, n_channels = 1, l
 
     # Compila modelol
     optimizer = Adam(lr=lr, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
-    model.compile(optimizer=optimizer, loss=loss, metrics=['acc', dice_coef])
+    model.compile(optimizer=optimizer, loss=loss, metrics=['acc', dice_coef_metric])
 
     return model

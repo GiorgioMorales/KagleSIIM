@@ -76,9 +76,14 @@ class DataGenerator(keras.utils.Sequence):
             addr = self.path + ID[len(self.path):]
             addrm = self.maskpath + ID[len(self.path):-4] + '.tif'  # Lee dirección de la máscara / label
 
-            # Lee imagen
-            ds = pydicom.read_file(addr)
-            img = ds.pixel_array
+            if ID[-4:] == '.dcm':
+                # Lee imagen DICOM
+                ds = pydicom.read_file(addr)
+                img = ds.pixel_array
+            else:
+                # Lee imagen JPG
+                img = cv2.imread(cv2.imread(addr, 0))
+
             # Añade CLAHE (Contrast Limited Adaptive Histogram Equalization)
             # clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(16, 16))
             # img2 = (clahe.apply(img)).astype(np.uint8)
@@ -97,8 +102,8 @@ class DataGenerator(keras.utils.Sequence):
             mask2 = np.reshape((mask / 255), (self.dim, self.dim, 1))
 
             # Añade variación aleatoria de color a cada canal
-            img2, mask2 = self.randomflip(img2, mask2)
-            img2, mask2 = self.randomzoom(img2, mask2, 5)
+            # img2, mask2 = self.randomflip(img2, mask2)
+            # img2, mask2 = self.randomzoom(img2, mask2, 5)
 
             # basepath = os.getcwd()[:-7]
             # cv2.imwrite(basepath + '//Pruebas//' + os.path.basename(addr)[:-4] + "_orig.png", img2)

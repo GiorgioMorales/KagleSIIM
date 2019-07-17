@@ -7,6 +7,8 @@ from keras.models import load_model, Model
 from models_Giorgio import compiled_model, focal_loss
 import numpy as np
 import cv2
+import scipy.ndimage
+import math
 import glob
 import os
 import pydicom
@@ -150,12 +152,23 @@ def DataAugmentation(basepath = "./KagleSIIM", dim=1024):
       img_f, mask_f = flip(img, mask)
       cv2.imwrite("{0}{1}_f.jpg".format(path_data_output,data_id), img_f)
       cv2.imwrite("{0}{1}_f.jpg".format(path_mask_output,data_id), mask_f)
-      #img_2, mask_2 = zoom(img_f, mask_f, 2)
-      #cv2.imwrite("{0}{1}_fz2.jpg".format(path_data_output,data_id), img_2)
-      #cv2.imwrite("{0}{1}_fz2.jpg".format(path_mask_output,data_id), mask_2)
-      #img_5, mask_5 = zoom(img_f, mask_f, 5)
-      #cv2.imwrite("{0}{1}_fz5.jpg".format(path_data_output,data_id), img_5)
-      #cv2.imwrite("{0}{1}_fz5.jpg".format(path_mask_output,data_id), mask_5)
+
+      # Rotate 5° and crop
+      img_r = cv2.resize(scipy.ndimage.rotate(img, 5, reshape=False), (1024, 1024))
+      img_r_c = cv2.resize(img_r[40:985, 40:985], (1024, 1024))
+      mask_r = cv2.resize(scipy.ndimage.rotate(mask, 5, reshape=False), (1024, 1024))
+      mask_r_c = cv2.resize(mask_r[40:985, 40:985], (1024, 1024))
+      cv2.imwrite("{0}{1}_rot5.jpg".format(path_data_output, data_id), img_r_c)
+      cv2.imwrite("{0}{1}_rot5.jpg".format(path_mask_output, data_id), mask_r_c)
+
+      # Rotate -5° and crop
+      img_r = cv2.resize(scipy.ndimage.rotate(img_f, 355, reshape=False), (1024, 1024))
+      img_r_c = cv2.resize(img_r[40:985, 40:985], (1024, 1024))
+      mask_r = cv2.resize(scipy.ndimage.rotate(mask_f, 355, reshape=False), (1024, 1024))
+      mask_r_c = cv2.resize(mask_r[40:985, 40:985], (1024, 1024))
+      cv2.imwrite("{0}{1}_rot355.jpg".format(path_data_output, data_id), img_r_c)
+      cv2.imwrite("{0}{1}_rot355.jpg".format(path_mask_output, data_id), mask_r_c)
+
     else:
       cv2.imwrite("{0}{1}_original.jpg".format(path_data_output,data_id), img)
       cv2.imwrite("{0}{1}_original.jpg".format(path_mask_output,data_id), mask)
@@ -237,7 +250,7 @@ def Train_model():
   model = DenseNet121(include_top=False, weights=None, input_tensor=None,
                       input_shape=(256, 256, 3), pooling=None, classes=1)
   y = model.get_layer('relu').output
-  y = Dropout(0.1)(y)
+  #y = Dropout(0.1)(y)
   y = GlobalAveragePooling2D()(y)
   y = Dense(1, activation='sigmoid', name='Prediction')(y)
   model2 = Model(inputs=model.input, outputs=y)
