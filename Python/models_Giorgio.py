@@ -498,7 +498,8 @@ Compile model
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-def compiled_model (modelname = 'build_generator1', dim =1024, n_channels = 1, lr = 0.0003, loss = 'focal_loss'):
+def compiled_model (modelname = 'build_generator1', dim =1024, n_channels = 1, lr = 0.0003, multiple_loss = False,
+                    alpha = 0.5, loss = 'focal_loss', loss2 = 'binary_crossentropy'):
 
     loss = globals()[loss]
     print("Cargando modelo...")
@@ -507,6 +508,10 @@ def compiled_model (modelname = 'build_generator1', dim =1024, n_channels = 1, l
 
     # Compila modelol
     optimizer = Adam(lr=lr, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
-    model.compile(optimizer=optimizer, loss=loss, metrics=['acc', dice_coef_metric])
+    if multiple_loss:
+        model.compile(optimizer=optimizer, loss=[loss, loss2], loss_weights=[alpha,1-alpha],
+                      metrics=['acc', dice_coef_metric])
+    else:
+        model.compile(optimizer=optimizer, loss=[loss], metrics=['acc', dice_coef_metric])
 
     return model

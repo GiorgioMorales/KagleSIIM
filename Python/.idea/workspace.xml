@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="53e77e59-6b94-46c1-a1f2-7505cfaa2b0f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReadDICOM.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReadDICOM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Train_Giorgio.py" beforeDir="false" afterPath="$PROJECT_DIR$/Train_Giorgio.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models_Giorgio.py" beforeDir="false" afterPath="$PROJECT_DIR$/models_Giorgio.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,17 +70,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Train_Giorgio.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
+            <state relative-caret-position="-263">
               <caret line="60" column="19" lean-forward="true" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="107" column="56" selection-start-line="107" selection-start-column="56" selection-end-line="107" selection-end-column="56" />
+            <state relative-caret-position="94">
+              <caret line="98" column="64" selection-start-line="98" selection-start-column="64" selection-end-line="98" selection-end-column="64" />
               <folding>
                 <element signature="e#59#77#0" expanded="true" />
               </folding>
@@ -90,13 +88,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataGeneratorclass.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="944">
-              <caret line="111" column="37" selection-start-line="111" selection-start-column="37" selection-end-line="111" selection-end-column="37" />
+            <state relative-caret-position="247">
+              <caret line="500" selection-start-line="500" selection-end-line="516" selection-end-column="16" />
               <folding>
-                <element signature="e#59#77#0" expanded="true" />
+                <element signature="e#1#69#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -109,18 +107,6 @@
               <caret line="112" column="23" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="23" />
               <folding>
                 <element signature="e#59#77#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="501" lean-forward="true" selection-start-line="501" selection-end-line="501" />
-              <folding>
-                <element signature="e#1#69#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,12 +149,12 @@
         <option value="$PROJECT_DIR$/Train_ChestXNET.py" />
         <option value="$PROJECT_DIR$/Predict_test_results_combined.py" />
         <option value="$PROJECT_DIR$/Find_best_threshold_classification.py" />
-        <option value="$PROJECT_DIR$/models_Giorgio.py" />
         <option value="$PROJECT_DIR$/Test_individual_images.py" />
         <option value="$PROJECT_DIR$/ReadCSV.py" />
         <option value="$PROJECT_DIR$/ReadDICOM.py" />
         <option value="$PROJECT_DIR$/Train_Giorgio.py" />
         <option value="$PROJECT_DIR$/dataGenerator.py" />
+        <option value="$PROJECT_DIR$/models_Giorgio.py" />
       </list>
     </option>
   </component>
@@ -378,7 +364,7 @@
       <workItem from="1562878124116" duration="4288000" />
       <workItem from="1563381957118" duration="13403000" />
       <workItem from="1563397703911" duration="260000" />
-      <workItem from="1563398947177" duration="5046000" />
+      <workItem from="1563398947177" duration="6734000" />
     </task>
     <task id="LOCAL-00001" summary="5/07">
       <created>1562341155878</created>
@@ -517,13 +503,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89778000" />
+    <option name="totallyTimeSpent" value="91466000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2771855" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2771855" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -538,7 +524,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" weight="0.32900432" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32827735" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" sideWeight="0.93336886" visible="true" weight="0.32792208" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.93336886" visible="true" weight="0.32792208" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -761,16 +747,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="501" lean-forward="true" selection-start-line="501" selection-end-line="501" />
-          <folding>
-            <element signature="e#1#69#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ReadCSV.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -793,17 +769,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Train_Giorgio.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
+        <state relative-caret-position="-263">
           <caret line="60" column="19" lean-forward="true" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dataGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="107" column="56" selection-start-line="107" selection-start-column="56" selection-end-line="107" selection-end-column="56" />
+        <state relative-caret-position="94">
+          <caret line="98" column="64" selection-start-line="98" selection-start-column="64" selection-end-line="98" selection-end-column="64" />
           <folding>
             <element signature="e#59#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models_Giorgio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="500" selection-start-line="500" selection-end-line="516" selection-end-column="16" />
+          <folding>
+            <element signature="e#1#69#0" expanded="true" />
           </folding>
         </state>
       </provider>
