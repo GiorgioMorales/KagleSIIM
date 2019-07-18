@@ -55,6 +55,13 @@ class DataGenerator(keras.utils.Sequence):
             y = np.flip(y, 1)
         return x, y
 
+    def randomclahe(self, x):
+        p = random.randint(0, 1)
+        if p:
+            clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(16, 16))
+            x = (clahe.apply(x))
+        return x.astype(np.uint8)
+
     def randomzoom(self, x, y, zoom):
         p = random.randint(0, zoom)
         offset = int(self.dim * p / 100.) * 2
@@ -74,23 +81,23 @@ class DataGenerator(keras.utils.Sequence):
         for i, ID in enumerate(list_IDs_temp):  # [(0,'C://dataset//im423.jpg'),(1,'C://dataset//im672.jpg'),...]
 
             addr = self.path + ID[len(self.path):]
-            addrm = self.maskpath + ID[len(self.path):-4] + '.tif'  # Lee dirección de la máscara / label
 
             if ID[-4:] == '.dcm':
                 # Lee imagen DICOM
                 ds = pydicom.read_file(addr)
                 img = ds.pixel_array
+                # Lee máscara
+                addrm = self.maskpath + ID[len(self.path):-4] + '.tif'  # Lee dirección de la máscara / label
+                mask = np.flip(np.rot90(cv2.imread(addrm, 0), 3), 1)
             else:
                 # Lee imagen JPG
                 img = cv2.imread(addr, 0)
+                # Lee máscara
+                addrm = self.maskpath + ID[len(self.path):-4] + '.jpg'  # Lee dirección de la máscara / label
+                mask = cv2.imread(addrm, 0)
 
             # Añade CLAHE (Contrast Limited Adaptive Histogram Equalization)
-            # clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(16, 16))
-            # img2 = (clahe.apply(img)).astype(np.uint8)
-            img2 = img.astype(np.uint8)
-
-            # Lee máscara
-            mask = np.flip(np.rot90(cv2.imread(addrm, 0), 3), 1)
+            img2 = self.randomclahe(img)
 
             # Resize si es necesario
             if self.dim != 1024:
@@ -101,16 +108,12 @@ class DataGenerator(keras.utils.Sequence):
             img2 = np.reshape(img2,(self.dim, self.dim, 1))
             mask2 = np.reshape((mask / 255), (self.dim, self.dim, 1))
 
-            # Añade variación aleatoria de color a cada canal
-            img2, mask2 = self.randomflip(img2, mask2)
-            img2, mask2 = self.randomzoom(img2, mask2, 5)
-
-            # basepath = os.getcwd()[:-7]
-            # cv2.imwrite(basepath + '//Pruebas//' + os.path.basename(addr)[:-4] + "_orig.png", img2)
-            # cv2.imwrite(basepath + '//Pruebas//' + os.path.basename(addr)[:-4] + "_mask.png", mask2*255)
+            # # Añade variación aleatoria de color a cada canal
+            # img2, mask2 = self.randomflip(img2, mask2)
+            # img2, mask2 = self.randomzoom(img2, mask2, 5)
 
             # Guarda muestra
-            X[i,] = np.reshape(img2, (self.dim, self.dim, 1))
+            X[i,] = img2
             # Guarda máscara / labeladdrm
             y[i,] = mask2
 

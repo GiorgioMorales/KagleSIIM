@@ -61,3 +61,31 @@ for dir in glob.glob(orig_path):
 
     if os.path.exists(os.path.join(maskdir, mdir)):
         copyfile(dir, 'C://Users//User//KagleSIIM//TrainO//' + os.path.basename(dir))
+
+
+maskdir = 'C://Users//User//KagleSIIM2//MasksO/*.tif'
+# Crea carpeta sólo para imágenes con pneumothorax
+orig_path = 'C://Users//User//KagleSIIM2//TrainA/'
+mask_path = 'C://Users//User//KagleSIIM2//MasksA/'
+for dir in glob.glob(maskdir):
+    mdir = os.path.join(mask_path, os.path.basename(dir)[:-4] + "_f.jpg")
+    mdir2 = os.path.join(mask_path, os.path.basename(dir)[:-4] + "_original.jpg")
+    mdir3 = os.path.join(mask_path, os.path.basename(dir)[:-4] + "_rot5.jpg")
+    mdir4 = os.path.join(mask_path, os.path.basename(dir)[:-4] + "_rot355.jpg")
+
+    tdir = os.path.join(orig_path, os.path.basename(dir)[:-4] + "_f.jpg")
+    tdir2 = os.path.join(orig_path, os.path.basename(dir)[:-4] + "_original.jpg")
+    tdir3 = os.path.join(orig_path, os.path.basename(dir)[:-4] + "_rot5.jpg")
+    tdir4 = os.path.join(orig_path, os.path.basename(dir)[:-4] + "_rot355.jpg")
+
+    if os.path.exists(mdir):
+        copyfile(mdir, 'C://Users//User//KagleSIIM2//MasksAO//' + os.path.basename(mdir))
+        copyfile(mdir2, 'C://Users//User//KagleSIIM2//MasksAO//' + os.path.basename(mdir2))
+        copyfile(mdir3, 'C://Users//User//KagleSIIM2//MasksAO//' + os.path.basename(mdir3))
+        copyfile(mdir4, 'C://Users//User//KagleSIIM2//MasksAO//' + os.path.basename(mdir4))
+
+        copyfile(tdir, 'C://Users//User//KagleSIIM2//TrainAO//' + os.path.basename(tdir))
+        copyfile(tdir2, 'C://Users//User//KagleSIIM2//TrainAO//' + os.path.basename(tdir2))
+        copyfile(tdir3, 'C://Users//User//KagleSIIM2//TrainAO//' + os.path.basename(tdir3))
+        copyfile(tdir4, 'C://Users//User//KagleSIIM2//TrainAO//' + os.path.basename(tdir4))
+
