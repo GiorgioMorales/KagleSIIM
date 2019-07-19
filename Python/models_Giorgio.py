@@ -38,7 +38,6 @@ def tversky_loss(y_true, y_pred, beta = 0.8):
 
     return numerator / (tf.reduce_sum(denominator) + tf.keras.backend.epsilon())
 
-
 def dice_loss(y_true, y_pred):
     smooth = K.epsilon()
     y_true_f = K.flatten(y_true)

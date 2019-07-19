@@ -74,7 +74,7 @@ class DataGenerator(keras.utils.Sequence):
     def __data_generation(self, list_IDs_temp):
         'Genera data'  # X : (n_samples, *dim, n_channels)
         # Inicializa input y output
-        X = np.empty((self.batch_size, self.dim, self.dim, self.n_channels))
+        X = np.empty((self.batch_size, self.dim, self.dim, self.n_channels), dtype=np.float)
         y = np.empty((self.batch_size, self.dim, self.dim, 1))
 
         # Generate data
@@ -113,7 +113,8 @@ class DataGenerator(keras.utils.Sequence):
             # img2, mask2 = self.randomzoom(img2, mask2, 5)
 
             # Guarda muestra
-            X[i,] = img2
+            img3 = cv2.merge([img2, img2, img2])
+            X[i,] = np.reshape(img3, (self.dim, self.dim, 3)) / 255.
             # Guarda máscara / labeladdrm
             y[i,] = mask2
 
