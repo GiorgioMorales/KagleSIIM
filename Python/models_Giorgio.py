@@ -3,8 +3,10 @@ from keras.layers import Input, Dropout, Concatenate, Flatten, Dense
 from keras.layers import BatchNormalization, Activation, GlobalAveragePooling2D
 from keras.layers.convolutional import UpSampling2D, Conv2D, DepthwiseConv2D, SeparableConv2D
 from keras.models import Model
+from keras.applications.densenet import DenseNet121
 from keras.optimizers import Adam
 from keras.layers import Add
+from keras.losses import binary_crossentropy
 import tensorflow as tf
 
 import keras.backend as K
@@ -37,10 +39,16 @@ def tversky_loss(y_true, y_pred, beta = 0.8):
     return numerator / (tf.reduce_sum(denominator) + tf.keras.backend.epsilon())
 
 
-def dice_coef(y_true, y_pred, smooth=K.epsilon()):
-    numerator = 2 * tf.reduce_sum(y_true * y_pred)
-    denominator = tf.reduce_sum(y_true + tf.square(y_pred))
-    return numerator / (denominator + tf.keras.backend.epsilon())
+def dice_loss(y_true, y_pred):
+    smooth = K.epsilon()
+    y_true_f = K.flatten(y_true)
+    y_pred_f = K.flatten(y_pred)
+    intersection = y_true_f * y_pred_f
+    score = (2. * K.sum(intersection) + smooth) / (K.sum(y_true_f) + K.sum(y_pred_f) + smooth)
+    return 1. - score
+
+def bce_dice_loss(y_true, y_pred):
+    return binary_crossentropy(y_true, y_pred) + dice_loss(y_true, y_pred)
 
 def dice_coef_metric(y_true, y_pred):
 
@@ -51,9 +59,6 @@ def dice_coef_metric(y_true, y_pred):
     dicev = (2. * intersection + K.epsilon()) / (union + intersection + K.epsilon())
 
     return K.mean(dicev)
-
-def dice_coef_loss(y_true, y_pred):
-    return 1-dice_coef(y_true, y_pred)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -491,6 +496,87 @@ def build_clasificator(img_shape=(256, 256, 1)):
     x = Dense(1, activation='sigmoid', name='fc' + str(1))(x)
 
     return Model(d0, x)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Modelo 2
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+def build_generator_combined(img_shape=(256, 256, 1)):
+
+    def relu6(x):
+        return K.relu(x, max_value=6)
+
+    # Construye una DenseNet121 con una salida sigmoid
+    model = DenseNet121(include_top=False, weights=None, input_tensor=None,
+                        input_shape=(256, 256, 3), pooling=None, classes=1)
+    x = model.get_layer('pool3_conv').output
+
+    skip1 = model.get_layer('conv1/relu').output
+
+    """""""""""""""""""""""""""
+    """"""""""""""""""""""""""
+    ASPP
+    """"""""""""""""""""""""""
+    """""""""""""""""""""""""""
+    atrous_rates = (3, 6, 9)
+
+    # simple 1x1
+    b0 = Conv2D(256, (1, 1), padding='same', use_bias=False, name='aspp0')(x)
+    b0 = BatchNormalization(name='aspp0_BN', epsilon=1e-5)(b0)
+    b0 = Activation('relu', name='aspp0_activation')(b0)
+
+    # rate = 6 (12)
+    b1 = SeparableConv2D(256, kernel_size=3, strides=(1, 1), padding='same',
+                         dilation_rate=atrous_rates[0], name='app1')(x)
+    # rate = 12 (24)
+    b2 = SeparableConv2D(256, kernel_size=3, strides=(1, 1), padding='same',
+                         dilation_rate=atrous_rates[1], name='app2')(x)
+    # rate = 18 (36)
+    b3 = SeparableConv2D(256, kernel_size=3, strides=(1, 1), padding='same',
+                         dilation_rate=atrous_rates[2], name='app3')(x)
+
+    # concatenate ASPP branches and project
+    x = Concatenate()([b0, b1, b2, b3])
+    b0 = None
+    b1 = None
+    b2 = None
+    b3 = None
+
+    x = Conv2D(256, (1, 1), padding='same',
+               use_bias=False, name='concat_projection')(x)
+    x = BatchNormalization(name='concat_projection_BN', epsilon=1e-5)(x)
+    x = Activation('relu')(x)
+    x = Dropout(0.1)(x)
+
+    """""""""""""""""""""""""""
+    """"""""""""""""""""""""""
+    Decoder
+    """"""""""""""""""""""""""
+    """""""""""""""""""""""""""
+
+    x = UpSampling2D(size=4)(x)
+    dec_skip1 = Conv2D(48, (1, 1), padding='same',
+                       use_bias=False, name='feature_projection0')(skip1)
+    dec_skip1 = BatchNormalization(
+        name='feature_projection0_BN', epsilon=1e-5)(dec_skip1)
+    dec_skip1 = Activation('relu')(dec_skip1)
+    x = Concatenate()([x, dec_skip1])
+
+    dec_skip1 = None
+
+    x = SeparableConv2D(256, kernel_size=3, strides=(1, 1), padding='same',
+                        dilation_rate=1, name='decoder_conv0')(x)
+    x = SeparableConv2D(256, kernel_size=3, strides=(1, 1), padding='same',
+                        dilation_rate=1, name='decoder_conv1')(x)
+
+    x = Conv2D(1, (1, 1), padding='same', name="last_layer", activation='sigmoid')(x)
+    x = UpSampling2D(size=2)(x)
+
+    return Model(model.input, x)
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

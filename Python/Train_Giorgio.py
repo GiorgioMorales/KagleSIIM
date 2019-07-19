@@ -11,8 +11,9 @@ from random import shuffle
 import glob
 import os
 from keras.callbacks import ModelCheckpoint
-
-from models_Giorgio import compiled_model
+from keras.models import load_model
+from keras.optimizers import Adam
+from models_Giorgio import compiled_model, focal_loss, dice_coef_metric, bce_dice_loss
 
 from dataGenerator import DataGenerator
 
@@ -49,7 +50,7 @@ val_origin = addri[int(0.9 * len(addri)):]
 # Parametros para la generación de data
 path = basepath + '//TrainAO'
 maskpath = basepath + '//MasksAO'
-n_channels = 1
+n_channels = 3
 dim = 256
 params = {'dim': dim,
           'batch_size': 10,
@@ -83,11 +84,38 @@ validation_generator = DataGenerator(data_dict['validation'], **params)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Transfer Learning
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+# Define función para copiar layers
+def copyModel2Model(model_source, model_target, certain_layer=""):
+    for l_tg, l_sr in zip(model_target.layers, model_source.layers):
+        wk0 = l_sr.get_weights()
+        l_tg.set_weights(wk0)
+        l_tg.trainable = False
+        print(l_tg.name)
+        if l_tg.name == certain_layer:
+            break
+    print("se copiaron los pesos")
+
+# Carga modelo
+# model = compiled_model('build_generator_combined', dim=dim, lr=0.0001, loss='focal_loss')
+#
+# # Copia los pesos de la red pre-entrenada
+# model_base = load_model('Redes/CheXNet_network.h5', custom_objects={'focal_loss': focal_loss})
+# copyModel2Model(model_base, model, "pool3_conv")
+# optimizer = Adam(lr=0.0001, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
+# model.compile(optimizer=optimizer, loss=[focal_loss], metrics=['acc', dice_coef_metric])
+
+model = load_model('build_generator_combined_pretrained.h5', custom_objects={'focal_loss': focal_loss, 'dice_coef_metric': dice_coef_metric})
+optimizer = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
+model.compile(optimizer=optimizer, loss=bce_dice_loss, metrics=['acc', dice_coef_metric])
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Entrenamiento
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-# Carga modelo
-model = compiled_model('build_generator2', dim=dim, lr=0.0001, loss='dice_coef_loss')
+
 
 #model.load_weights('Redes/weights-train2-05-0.9947.h5')
 
@@ -102,5 +130,5 @@ history = model.fit_generator(generator=training_generator,
                               validation_data=validation_generator,
                               use_multiprocessing=False,
                               shuffle=True,
-                              epochs=100,
+                              epochs=1000,
                               callbacks=callbacks_list)
