@@ -599,7 +599,7 @@ def residual_block(blockInput, num_filters=16):
     return x
 
 
-from KagleSIIM.Python.efficientnet import EfficientNetB4
+from efficientnet import EfficientNetB4
 
 
 def UEfficientNet(img_shape=(None, None, 3), dropout_rate=0.1):

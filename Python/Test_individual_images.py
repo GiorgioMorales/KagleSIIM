@@ -174,8 +174,8 @@ def build_generator1(img_shape=(1024, 1024, 1)):
 # model.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
 
 dim = 256
-model = compiled_model('build_generator2', dim=dim, n_channels = 1, lr = 0.0003, loss = 'focal_loss')
-model.load_weights('Redes/weightsloss.h5')
+model = compiled_model('UEfficientNet', dim=dim, n_channels = 3, lr = 0.0003, loss = 'focal_loss')
+model.load_weights('Redes/weights-train1-14-0.4590.h5')
 optimizer = Adam(lr=0.03, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 model.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
 
@@ -185,7 +185,7 @@ Carga imágenes al azar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 basepath = os.getcwd()[:-7]
-orig_path = basepath + '2//TrainA//*.jpg'
+orig_path = basepath + '//TrainAO//*.jpg'
 
 # Obtiene una lista de las direcciones de las imágenes y sus máscaras
 addri = sorted(glob.glob(orig_path))
@@ -194,7 +194,7 @@ addri = sorted(glob.glob(orig_path))
 shuffle(addri)
 
 dirimages = addri[0:10]
-maskpath = basepath + '2//MasksA//'
+maskpath = basepath + '//MasksAO//'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -207,20 +207,22 @@ for cnt, dir in enumerate(dirimages):
 
     # Lee imagen
     img = cv2.imread(dir, 0)
-    #clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(16, 16))
-    #img = (clahe.apply(img)).astype(np.uint8)
+    clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(16, 16))
+    img = (clahe.apply(img)).astype(np.uint8)
     # Dirección de máscara
     dirm = maskpath + os.path.basename(dir)[:-4] + '.jpg'
     # Lee máscara
-    mask = np.flip(np.rot90(cv2.imread(dirm, 0), 3), 1)
+    mask = cv2.imread(dirm, 0)
 
     if dim != 1024:
-        img = cv2.resize(img, (dim, dim))
+        img = (cv2.resize(img, (dim, dim))).astype(np.float)/255.
         mask = cv2.resize(mask, (dim, dim))
 
     # Predice resultado
+    img2 = cv2.merge([img, img, img])
+    img2 = np.reshape(img2, (1, dim, dim, 3))
     st = time.time()
-    y = np.reshape(model.predict(np.reshape(img, (1, dim, dim, 1))), (dim, dim)) * 255
+    y = np.reshape(model.predict(img2), (dim, dim)) * 255
     end = time.time()
 
     print(end - st)
