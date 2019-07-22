@@ -603,7 +603,7 @@ from efficientnet import EfficientNetB4
 
 
 def UEfficientNet(img_shape=(None, None, 3), dropout_rate=0.1):
-    backbone = EfficientNetB4(weights='imagenet',
+    backbone = EfficientNetB4(weights=None,
                               include_top=False,
                               input_shape=img_shape)
     input = backbone.input

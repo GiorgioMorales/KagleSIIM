@@ -28,7 +28,7 @@ dim = 256
 n_channels = 3
 # model = compiled_model('build_clasificator', dim=dim, n_channels = 1, lr = 0.0003, loss = 'focal_loss')
 model = load_model('Redes/CheXNet_network_pretrained.h5', custom_objects={'focal_loss':focal_loss})
-model.load_weights('Redes/weights-trainclasschest-10-0.8788.h5')
+model.load_weights('Redes/weights-trainclasschest-219-0.8570.h5')
 optimizer = Adam(lr=0.0003, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 model.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
 
@@ -46,7 +46,7 @@ addri = sorted(glob.glob(orig_path))
 # Reordena aleatoriamente las direcciones por pares
 shuffle(addri)
 #lon = 1000
-dirimages = addri[:1000]
+dirimages = addri[:2000]
 maskpath = basepath + '//Masks//'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -109,7 +109,7 @@ def dice_overall(preds, targs):
     return 2. * intersect / union
 
 
-thrs = np.arange(120, 160, 1)
+thrs = np.arange(120, 240, 1)
 accs = []
 negs = []
 for th in thrs:

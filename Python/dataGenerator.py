@@ -8,6 +8,7 @@ import cv2
 import random
 import pydicom
 import os
+from PIL import Image
 
 
 class DataGenerator(keras.utils.Sequence):
@@ -74,7 +75,7 @@ class DataGenerator(keras.utils.Sequence):
     def __data_generation(self, list_IDs_temp):
         'Genera data'  # X : (n_samples, *dim, n_channels)
         # Inicializa input y output
-        X = np.empty((self.batch_size, self.dim, self.dim, self.n_channels), dtype=np.float)
+        X = np.empty((self.batch_size, self.dim, self.dim, self.n_channels))
         y = np.empty((self.batch_size, self.dim, self.dim, 1))
 
         # Generate data
@@ -91,32 +92,36 @@ class DataGenerator(keras.utils.Sequence):
                 mask = np.flip(np.rot90(cv2.imread(addrm, 0), 3), 1)
             else:
                 # Lee imagen JPG
-                img = cv2.imread(addr, 0)
+                img = np.array(Image.open(addr))
                 # Lee máscara
                 addrm = self.maskpath + ID[len(self.path):-4] + '.jpg'  # Lee dirección de la máscara / label
-                mask = cv2.imread(addrm, 0)
+                mask = np.array(Image.open(addrm))
 
             # Añade CLAHE (Contrast Limited Adaptive Histogram Equalization)
             img2 = self.randomclahe(img)
 
-            # Resize si es necesario
-            if self.dim != 1024:
-                img2 = cv2.resize(img2, (self.dim, self.dim))
-                mask = cv2.resize(mask, (self.dim, self.dim))
+            if len(img2.shape) == 2:
+                img2 = np.repeat(img2[..., None], 3, 2)
 
-            # Lo pone en la forma adecuada
-            img2 = np.reshape(img2, (self.dim, self.dim, 1))
-            mask2 = np.reshape((mask / 255), (self.dim, self.dim, 1))
-            mask2[mask2 > 0] = 1
+            # Resize si es necesario
+            # if self.dim != 1024:
+            #     img2 = cv2.resize(img2, (self.dim, self.dim),interpolation=cv2.INTER_AREA)
+            #     mask = cv2.resize(mask, (self.dim, self.dim),interpolation=cv2.INTER_AREA)
+
+            # # Lo pone en la forma adecuada
+            # img2 = np.reshape(img2, (self.dim, self.dim, 1))
+            # mask2 = np.reshape((mask / 255), (self.dim, self.dim, 1))
+            # mask2[mask2 > 0] = 1
 
             # # Añade variación aleatoria de color a cada canal
             # img2, mask2 = self.randomflip(img2, mask2)
             # img2, mask2 = self.randomzoom(img2, mask2, 5)
 
-            # Guarda muestra
-            img3 = cv2.merge([img2, img2, img2])
-            X[i, ] = np.reshape(img3, (self.dim, self.dim, 3)) / 255.
-            # Guarda máscara / labeladdrm
-            y[i, ] = mask2
+            # Resize sample
+            X[i,] = cv2.resize(img2, (self.dim, self.dim), interpolation=cv2.INTER_AREA)
+
+            # Store class
+            y[i,] = cv2.resize(mask, (self.dim, self.dim), interpolation=cv2.INTER_AREA)[..., np.newaxis]
+            y[y > 0] = 1
 
         return X, y

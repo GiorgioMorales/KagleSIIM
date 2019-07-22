@@ -25,7 +25,7 @@ dim = 256
 n_channels = 3
 # model = compiled_model('build_clasificator', dim=dim, n_channels = 1, lr = 0.0003, loss = 'focal_loss')
 model = load_model('Redes/CheXNet_network_pretrained.h5', custom_objects={'focal_loss':focal_loss})
-model.load_weights('Redes/weights-trainclasschest-10-0.8788.h5')
+model.load_weights('Redes/weights-trainclasschest-219-0.8570.h5')
 optimizer = Adam(lr=0.0003, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 model.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
 
@@ -62,7 +62,7 @@ for cnt, dir in enumerate(addri):
         img = cv2.merge([img, img, img])
 
     if dim != 1024:
-        img = cv2.resize(img, (dim, dim))
+        img = cv2.resize(img, (dim, dim),interpolation=cv2.INTER_AREA)
 
     images[cnt, ] = np.reshape(img, (dim, dim, n_channels)) / 255.
 
@@ -85,13 +85,10 @@ Carga modelo
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
-def relu6(x):
-    return K.relu(x, max_value=6)
-
-
-model2 = load_model('Redes/Test3.h5', custom_objects={'relu6': relu6, 'focal_loss': focal_loss})
-
+model2 = compiled_model('UEfficientNet', dim=dim, n_channels = 3, lr = 0.0003, loss = 'focal_loss')
+model2.load_weights('Redes/weights-train1-01-0.8053.h5')
+optimizer = Adam(lr=0.03, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
+model2.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Predice resultados
@@ -109,12 +106,12 @@ for cnt, dir in enumerate(addri):
 
     print(cnt)
 
-    if pred1[cnt] <= 0.4941:
+    if pred1[cnt] <= 0.78:
         mask = np.zeros((1024, 1024))
     else:
-        pred = np.reshape(model2.predict(np.reshape(images[cnt][:, :, 0] * 255, (1, dim, dim, 1))), (256, 256))
+        pred = np.reshape(model2.predict(np.reshape(images[cnt] * 255, (1, dim, dim, n_channels))), (dim, dim))
         # Delets small objects
-        nb_components, output, stats, centroids = cv2.connectedComponentsWithStats((pred*255 > 140).astype(np.uint8) * 255,
+        nb_components, output, stats, centroids = cv2.connectedComponentsWithStats((pred*255 > 128).astype(np.uint8) * 255,
                                                                                    connectivity=8)
         sizes = stats[1:, -1]
         nb_components = nb_components - 1
@@ -127,7 +124,7 @@ for cnt, dir in enumerate(addri):
         nb_components, _, _, _ = cv2.connectedComponentsWithStats(y2, connectivity=8)
 
         # Codifica máscara
-        mask = (cv2.resize(y2, (1024, 1024)) > 145).astype(np.uint8) * 255
+        mask = (cv2.resize(y2, (1024, 1024)) > 50).astype(np.uint8) * 255
 
     rles.append(mask2rle(mask, 1024, 1024))
 
@@ -135,5 +132,5 @@ for cnt, dir in enumerate(addri):
 import pandas as pd
 sub_df = pd.DataFrame({'ImageId': ids, 'EncodedPixels': rles})
 sub_df.loc[sub_df.EncodedPixels=='', 'EncodedPixels'] = '-1'
-sub_df.to_csv('submission2.csv', index=False)
+sub_df.to_csv('submission3.csv', index=False)
 sub_df.head()

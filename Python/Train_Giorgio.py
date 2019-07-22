@@ -14,6 +14,7 @@ from keras.callbacks import ModelCheckpoint
 from keras.models import load_model
 from keras.optimizers import Adam
 from models_Giorgio import compiled_model, focal_loss, dice_coef_metric, bce_dice_loss
+from keras.utils import multi_gpu_model
 
 from dataGenerator import DataGenerator
 
@@ -99,7 +100,7 @@ def copyModel2Model(model_source, model_target, certain_layer=""):
     print("se copiaron los pesos")
 
 # Carga modelo
-model = compiled_model('UEfficientNet', dim=dim, n_channels=3, lr=0.001, loss='bce_dice_loss')
+model = compiled_model('UEfficientNet', dim=dim, n_channels=3, lr=0.01, loss='bce_dice_loss')
 #
 # # Copia los pesos de la red pre-entrenada
 # model_base = load_model('Redes/CheXNet_network.h5', custom_objects={'focal_loss': focal_loss})
@@ -117,7 +118,7 @@ Entrenamiento
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-#model.load_weights('Redes/weights-train2-05-0.9947.h5')
+#model.load_weights('Redes/weights-train1-24-0.5896.h5')
 
 # checkpoint
 filepath = "weights-train1-{epoch:02d}-{val_dice_coef_metric:.4f}.h5"

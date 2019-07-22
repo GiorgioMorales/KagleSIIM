@@ -5,6 +5,7 @@ from keras.layers import Add
 from keras.models import Model
 from models_Giorgio import compiled_model, focal_loss
 from keras.optimizers import Adam
+
 import pydicom
 import cv2
 import os
@@ -175,7 +176,7 @@ def build_generator1(img_shape=(1024, 1024, 1)):
 
 dim = 256
 model = compiled_model('UEfficientNet', dim=dim, n_channels = 3, lr = 0.0003, loss = 'focal_loss')
-model.load_weights('Redes/weights-train1-14-0.4590.h5')
+model.load_weights('Redes/weights-train1-01-0.8053.h5')
 optimizer = Adam(lr=0.03, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 model.compile(optimizer=optimizer, loss=focal_loss, metrics=['acc'])
 
@@ -215,12 +216,12 @@ for cnt, dir in enumerate(dirimages):
     mask = cv2.imread(dirm, 0)
 
     if dim != 1024:
-        img = (cv2.resize(img, (dim, dim))).astype(np.float)/255.
-        mask = cv2.resize(mask, (dim, dim))
+        img = cv2.resize(img, (dim, dim),interpolation=cv2.INTER_AREA)
+        mask = cv2.resize(mask, (dim, dim),interpolation=cv2.INTER_AREA)
 
     # Predice resultado
-    img2 = cv2.merge([img, img, img])
-    img2 = np.reshape(img2, (1, dim, dim, 3))
+    img2 = np.repeat(img[..., None], 3, 2)
+    img2 = np.reshape(img2, [1, dim, dim, 3])
     st = time.time()
     y = np.reshape(model.predict(img2), (dim, dim)) * 255
     end = time.time()
