@@ -105,7 +105,7 @@ class DataGenerator(keras.utils.Sequence):
                 mask = cv2.resize(mask, (self.dim, self.dim))
 
             # Lo pone en la forma adecuada
-            img2 = np.reshape(img2,(self.dim, self.dim, 1))
+            img2 = np.reshape(img2, (self.dim, self.dim, 1))
             mask2 = np.reshape((mask / 255), (self.dim, self.dim, 1))
 
             # # Añade variación aleatoria de color a cada canal
@@ -114,8 +114,8 @@ class DataGenerator(keras.utils.Sequence):
 
             # Guarda muestra
             img3 = cv2.merge([img2, img2, img2])
-            X[i,] = np.reshape(img3, (self.dim, self.dim, 3)) / 255.
+            X[i, ] = np.reshape(img3, (self.dim, self.dim, 3)) / 255.
             # Guarda máscara / labeladdrm
-            y[i,] = mask2
+            y[i, ] = mask2
 
         return X, y

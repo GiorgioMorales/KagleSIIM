@@ -99,7 +99,7 @@ def copyModel2Model(model_source, model_target, certain_layer=""):
     print("se copiaron los pesos")
 
 # Carga modelo
-# model = compiled_model('build_generator_combined', dim=dim, lr=0.0001, loss='focal_loss')
+model = compiled_model('UEfficientNet', dim=dim, lr=0.001, loss='bce_dice_loss')
 #
 # # Copia los pesos de la red pre-entrenada
 # model_base = load_model('Redes/CheXNet_network.h5', custom_objects={'focal_loss': focal_loss})
@@ -107,9 +107,9 @@ def copyModel2Model(model_source, model_target, certain_layer=""):
 # optimizer = Adam(lr=0.0001, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 # model.compile(optimizer=optimizer, loss=[focal_loss], metrics=['acc', dice_coef_metric])
 
-model = load_model('build_generator_combined_pretrained.h5', custom_objects={'focal_loss': focal_loss, 'dice_coef_metric': dice_coef_metric})
-optimizer = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
-model.compile(optimizer=optimizer, loss=bce_dice_loss, metrics=['acc', dice_coef_metric])
+# model = load_model('build_generator_combined_pretrained.h5', custom_objects={'focal_loss': focal_loss, 'dice_coef_metric': dice_coef_metric})
+# optimizer = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
+# model.compile(optimizer=optimizer, loss=bce_dice_loss, metrics=['acc', dice_coef_metric])
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Entrenamiento
