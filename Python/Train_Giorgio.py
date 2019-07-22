@@ -99,7 +99,7 @@ def copyModel2Model(model_source, model_target, certain_layer=""):
     print("se copiaron los pesos")
 
 # Carga modelo
-model = compiled_model('UEfficientNet', dim=dim, lr=0.001, loss='bce_dice_loss')
+model = compiled_model('UEfficientNet', dim=dim, n_channels=3, lr=0.001, loss='bce_dice_loss')
 #
 # # Copia los pesos de la red pre-entrenada
 # model_base = load_model('Redes/CheXNet_network.h5', custom_objects={'focal_loss': focal_loss})
