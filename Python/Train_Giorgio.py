@@ -122,7 +122,7 @@ Entrenamiento
 
 # checkpoint
 filepath = "weights-train1-{epoch:02d}-{val_dice_coef_metric:.4f}.h5"
-checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=False, mode='max')
+checkpoint = ModelCheckpoint(filepath, monitor='val_dice_coef_metric:.4f', verbose=1, save_best_only=False, mode='max')
 callbacks_list = [checkpoint]
 
 # Train model

@@ -1,128 +1,46 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Import Libraries
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 import numpy as np
-import pandas as pd
-import gc
+import cv2
 import keras
-
-import matplotlib.pyplot as plt
-plt.style.use('seaborn-white')
-import seaborn as sns
-sns.set_style("white")
 import pydicom
-from sklearn.model_selection import train_test_split,StratifiedKFold
-
-from skimage.transform import resize
 import tensorflow as tf
-import keras.backend as K
-from keras.losses import binary_crossentropy
-
-from keras.preprocessing.image import load_img
-from keras import Model
-from keras.callbacks import  ModelCheckpoint
-from keras.layers import Input, Conv2D, Conv2DTranspose, MaxPooling2D, concatenate, Dropout,BatchNormalization
+from keras.models import Model, load_model
+from keras.layers import Conv2DTranspose, UpSampling2D, SeparableConv2D
 from keras.layers import Conv2D, Concatenate, MaxPooling2D
-from keras.layers import UpSampling2D, Dropout, BatchNormalization
-from keras import initializers
-from keras import regularizers
-from keras import constraints
-from keras.utils import conv_utils
-from keras.utils.data_utils import get_file
-from keras.engine.topology import get_source_inputs
-from keras.engine import InputSpec
 from keras import backend as K
 from keras.layers import LeakyReLU
-from keras.layers import ZeroPadding2D
 from keras.losses import binary_crossentropy
 import keras.callbacks as callbacks
-from keras.callbacks import Callback
-from keras.applications.xception import Xception
-from keras.layers import multiply
-
-
-from keras import optimizers
-from keras.legacy import interfaces
-from keras.utils.generic_utils import get_custom_objects
-
-from keras.engine.topology import Input
-from keras.engine.training import Model
-from keras.layers.convolutional import Conv2D, UpSampling2D, Conv2DTranspose
-from keras.layers.core import Activation, SpatialDropout2D
-from keras.layers.merge import concatenate
-from keras.layers.normalization import BatchNormalization
-from keras.layers.pooling import MaxPooling2D
 from keras.layers import Input,Dropout,BatchNormalization,Activation,Add
-from keras.regularizers import l2
-from keras.layers.core import Dense, Lambda
-from keras.layers.merge import concatenate, add
-from keras.layers import GlobalAveragePooling2D, Reshape, Dense, multiply, Permute
-from keras.optimizers import SGD
-from keras.preprocessing.image import ImageDataGenerator
-
+from keras.layers.merge import concatenate
 import glob
-import shutil
-import os
 import random
-from PIL import Image
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Set Folders
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 seed = 10
 np.random.seed(seed)
 random.seed(seed)
-os.environ['PYTHONHASHSEED'] = str(seed)
-np.random.seed(seed)
-tf.set_random_seed(seed)
-
-all_mask_fn = glob.glob('../Masks/*')
-mask_df = pd.DataFrame()
-mask_df['file_names'] = all_mask_fn
-mask_df['mask_percentage'] = 0
-mask_df.set_index('file_names', inplace=True)
-for fn in all_mask_fn:
-    mask_df.loc[fn, 'mask_percentage'] = np.array(Image.open(fn)).sum() / (
-                256 * 256 * 255)  # 255 is bcz img range is 255
-
-mask_df.reset_index(inplace=True)
-sns.distplot(mask_df.mask_percentage)
-mask_df['labels'] = 0
-mask_df.loc[mask_df.mask_percentage > 0, 'labels'] = 1
-
-all_train_fn = glob.glob('../Train/*')
-total_samples = len(all_train_fn)
-idx = np.arange(total_samples)
-train_fn, val_fn = train_test_split(all_train_fn, stratify=mask_df.labels, test_size=0.1, random_state=10)
-
-print('No. of train files:', len(train_fn))
-print('No. of val files:', len(val_fn))
-
-masks_train_fn = [fn.replace('../Train', '../Masks') for fn in train_fn]
-masks_val_fn = [fn.replace('../Train', '../Masks') for fn in val_fn]
-
-train_dir = '../keras_im_train'
-os.mkdir(train_dir)
-for full_fn in train_fn:
-    fn = full_fn.split('\\')[-1]
-    shutil.copy(full_fn, os.path.join(train_dir, fn))
-
-train_dir = '../keras_mask_train'
-os.mkdir(train_dir)
-for full_fn in masks_train_fn:
-    fn = full_fn.split('\\')[-1][:-4] + ".tif"
-    shutil.copy(full_fn[:-4] + ".tif", os.path.join(train_dir, fn))
-
-train_dir = '../keras_im_val'
-os.mkdir(train_dir)
-for full_fn in val_fn:
-    fn = full_fn.split('\\')[-1]
-    shutil.copy(full_fn, os.path.join(train_dir, fn))
-
-train_dir = '../keras_mask_val'
-os.mkdir(train_dir)
-for full_fn in masks_val_fn:
-    fn = full_fn.split('\\')[-1][:-4] + ".tif"
-    shutil.copy(full_fn[:-4] + ".tif", os.path.join(train_dir, fn))
 
 train_im_path, train_mask_path = '../keras_im_train', '../keras_mask_train'
 h, w, batch_size = 256, 256, 4
 
 val_im_path, val_mask_path = '../keras_im_val', '../keras_mask_val'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Define Generator
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 class DataGenerator(keras.utils.Sequence):
@@ -172,7 +90,7 @@ class DataGenerator(keras.utils.Sequence):
     def on_epoch_end(self):
         'Updates indexes after each epoch'
         self.indexes = np.arange(len(self.train_im_paths))
-        if self.shuffle == True:
+        if self.shuffle:
             np.random.shuffle(self.indexes)
 
     def data_generation(self, list_IDs_im):
@@ -187,10 +105,10 @@ class DataGenerator(keras.utils.Sequence):
             # im = np.array(Image.open(im_path))
             ds = pydicom.read_file(im_path)
             im = ds.pixel_array
-            mask_path = im_path.replace(self.train_im_path, self.train_mask_path)
+            mask_path = im_path.replace(self.train_im_path, self.train_mask_path)[:-4] + ".tif"
 
             # mask = np.array(Image.open(mask_path))
-            mask = np.flip(np.rot90(cv2.imread(mask_path[:-4] + ".tif", 0), 3), 1)
+            mask = np.flip(np.rot90(cv2.imread(mask_path, 0), 3), 1)
             if len(im.shape) == 2:
                 im = np.repeat(im[..., None], 3, 2)
 
@@ -203,8 +121,12 @@ class DataGenerator(keras.utils.Sequence):
 
         return np.uint8(X), np.uint8(y)
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Data Augmentation
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-import cv2
 from albumentations import (
     Compose, HorizontalFlip, CLAHE, HueSaturationValue,
     RandomBrightness, RandomContrast, RandomGamma, OneOf,
@@ -233,6 +155,12 @@ AUGMENTATIONS_TEST = Compose([
     ToFloat(max_value=1)
 ], p=1)
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Metrics and Losses
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 def get_iou_vector(A, B):
     # Numpy version
@@ -268,6 +196,7 @@ def my_iou_metric(label, pred):
     # Tensorflow version
     return tf.py_func(get_iou_vector, [label, pred > 0.5], tf.float64)
 
+
 def dice_coef(y_true, y_pred):
     y_true_f = K.flatten(y_true)
     y_pred = K.cast(y_pred, 'float32')
@@ -275,6 +204,7 @@ def dice_coef(y_true, y_pred):
     intersection = y_true_f * y_pred_f
     score = 2. * K.sum(intersection) / (K.sum(y_true_f) + K.sum(y_pred_f))
     return score
+
 
 def dice_loss(y_true, y_pred):
     smooth = 1.
@@ -284,11 +214,45 @@ def dice_loss(y_true, y_pred):
     score = (2. * K.sum(intersection) + smooth) / (K.sum(y_true_f) + K.sum(y_pred_f) + smooth)
     return 1. - score
 
+
 def bce_dice_loss(y_true, y_pred):
     return binary_crossentropy(y_true, y_pred) + dice_loss(y_true, y_pred)
 
+
 def bce_logdice_loss(y_true, y_pred):
     return binary_crossentropy(y_true, y_pred) - K.log(1. - dice_loss(y_true, y_pred))
+
+
+def focal_loss(y_true, y_pred, gamma=2., alpha=.9):
+
+    pt_1 = tf.where(tf.equal(y_true, 1), y_pred, tf.ones_like(y_pred))
+    pt_0 = tf.where(tf.equal(y_true, 0), y_pred, tf.zeros_like(y_pred))
+    epsilon = K.epsilon()
+
+    # clip to prevent NaN's and Inf's
+    pt_1 = K.clip(pt_1, epsilon, 1. - epsilon)
+    pt_0 = K.clip(pt_0, epsilon, 1. - epsilon)
+
+    return -K.sum(alpha * K.pow(1. - pt_1, gamma) * K.log(pt_1)) - K.sum((1-alpha) * K.pow(pt_0, gamma) *
+                                                                         K.log(1. - pt_0))
+
+
+def dice_coef_metric(y_true, y_pred):
+
+    y_pred = K.greater_equal(y_pred, 0.5)
+    y_true = K.greater_equal(y_true, 0.5)
+    intersection = K.sum(K.cast(tf.math.logical_and(y_true, y_pred), dtype = tf.float32), axis=[1, 2, 3])
+    union = K.sum(K.cast(tf.math.logical_or(y_true, y_pred), dtype = tf.float32), axis=[1, 2, 3])
+    dicev = (2. * intersection + K.epsilon()) / (union + intersection + K.epsilon())
+
+    return K.mean(dicev)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Callbacks
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 class SnapshotCallbackBuilder:
     def __init__(self, nb_epochs, nb_snapshots, init_lr=0.1):
@@ -299,7 +263,7 @@ class SnapshotCallbackBuilder:
     def get_callbacks(self, model_prefix='Model'):
 
         callback_list = [
-            callbacks.ModelCheckpoint("../keras.model",monitor='val_loss',
+            callbacks.ModelCheckpoint("../keras.model",monitor='val_dice_coef_metric:.4f',
                                    mode = 'min', save_best_only=True, verbose=1),
             swa,
             callbacks.LearningRateScheduler(schedule=self._cosine_anneal_schedule)
@@ -313,6 +277,16 @@ class SnapshotCallbackBuilder:
         cos_out = np.cos(cos_inner) + 1
         return float(self.alpha_zero / 2 * cos_out)
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+                                Model
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 from efficientnet import EfficientNetB4
 
@@ -408,10 +382,105 @@ def UEfficientNet(input_shape=(None, None, 3), dropout_rate=0.1):
     return model
 
 
+def build_generator_combined(img_shape=(256, 256, 3)):
+
+    from keras.applications.densenet import DenseNet121
+
+    # Construye una DenseNet121 con una salida sigmoid
+    model = DenseNet121(include_top=False, weights=None, input_tensor=None,
+                        input_shape=img_shape, pooling=None, classes=1)
+    x = model.get_layer('pool3_conv').output
+
+    skip1 = model.get_layer('conv1/relu').output
+
+    """""""""""""""""""""""""""
+    """"""""""""""""""""""""""
+    ASPP
+    """"""""""""""""""""""""""
+    """""""""""""""""""""""""""
+    atrous_rates = (3, 6, 9)
+
+    # simple 1x1
+    b0 = Conv2D(256, (1, 1), padding='same', use_bias=False, name='aspp0')(x)
+    b0 = BatchNormalization(name='aspp0_BN', epsilon=1e-5)(b0)
+    b0 = Activation('relu', name='aspp0_activation')(b0)
+
+    # rate = 6 (12)
+    b1 = SeparableConv2D(256, kernel_size=3, strides=(1, 1), padding='same',
+                         dilation_rate=atrous_rates[0], name='app1')(x)
+    # rate = 12 (24)
+    b2 = SeparableConv2D(256, kernel_size=3, strides=(1, 1), padding='same',
+                         dilation_rate=atrous_rates[1], name='app2')(x)
+    # rate = 18 (36)
+    b3 = SeparableConv2D(256, kernel_size=3, strides=(1, 1), padding='same',
+                         dilation_rate=atrous_rates[2], name='app3')(x)
+
+    # Concatenate() ASPP branches and project
+    x = Concatenate()([b0, b1, b2, b3])
+
+    x = Conv2D(256, (1, 1), padding='same',
+               use_bias=False, name='concat_projection')(x)
+    x = BatchNormalization(name='concat_projection_BN', epsilon=1e-5)(x)
+    x = Activation('relu')(x)
+    x = Dropout(0.1)(x)
+
+    """""""""""""""""""""""""""
+    """"""""""""""""""""""""""
+    Decoder
+    """"""""""""""""""""""""""
+    """""""""""""""""""""""""""
+
+    x = UpSampling2D(size=4)(x)
+    dec_skip1 = Conv2D(48, (1, 1), padding='same',
+                       use_bias=False, name='feature_projection0')(skip1)
+    dec_skip1 = BatchNormalization(
+        name='feature_projection0_BN', epsilon=1e-5)(dec_skip1)
+    dec_skip1 = Activation('relu')(dec_skip1)
+    x = Concatenate()([x, dec_skip1])
+
+
+    x = SeparableConv2D(256, kernel_size=3, strides=(1, 1), padding='same',
+                        dilation_rate=1, name='decoder_conv0')(x)
+    x = SeparableConv2D(256, kernel_size=3, strides=(1, 1), padding='same',
+                        dilation_rate=1, name='decoder_conv1')(x)
+
+    x = Conv2D(1, (1, 1), padding='same', name="last_layer", activation='sigmoid')(x)
+    x = UpSampling2D(size=2)(x)
+
+    return Model(model.input, x)
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Compile and transfer learning
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 K.clear_session()
 img_size = 256
-model = UEfficientNet(input_shape=(img_size, img_size, 3), dropout_rate=0.25)
 
+
+def copyModel2Model(model_source, model_target, certain_layer="", nfreeze = True):
+    for l_tg, l_sr in zip(model_target.layers, model_source.layers):
+        wk0 = l_sr.get_weights()
+        l_tg.set_weights(wk0)
+        l_tg.trainable = nfreeze
+        print(l_tg.name)
+        if l_tg.name == certain_layer:
+            break
+    print("se copiaron los pesos")
+
+# Carga modelo
+model = build_generator_combined()
+
+# Copia los pesos de la red pre-entrenada
+model_base = load_model('Redes/CheXNet_network.h5', custom_objects={'focal_loss': focal_loss})
+copyModel2Model(model_base, model, "pool3_conv")
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+SWA
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 class SWA(keras.callbacks.Callback):
 
@@ -445,11 +514,11 @@ class SWA(keras.callbacks.Callback):
         self.model.save_weights(self.filepath)
         print('Final stochastic averaged weights saved to file.')
 
-model.compile(loss=bce_dice_loss, optimizer='adam', metrics=[my_iou_metric])
+
+model.compile(loss=bce_dice_loss, optimizer='adam', metrics=[my_iou_metric, dice_coef_metric])
 
 epochs = 70
 snapshot = SnapshotCallbackBuilder(nb_epochs=epochs,nb_snapshots=1,init_lr=1e-3)
-batch_size = 4
 swa = SWA('../keras_swa.model',67)
 valid_im_path,valid_mask_path = '../keras_im_val','../keras_mask_val'
 # Generators
@@ -457,6 +526,12 @@ training_generator = DataGenerator(augmentations=AUGMENTATIONS_TRAIN,img_size=im
 validation_generator = DataGenerator(train_im_path = valid_im_path ,
                                      train_mask_path=valid_mask_path,augmentations=AUGMENTATIONS_TEST,
                                      img_size=img_size)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Training
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 history = model.fit_generator(generator=training_generator,
                             validation_data=validation_generator,
