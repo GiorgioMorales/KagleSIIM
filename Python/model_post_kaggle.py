@@ -105,7 +105,7 @@ for full_fn in train_fn:
 train_dir = '../keras_mask_train'
 os.mkdir(train_dir)
 for full_fn in masks_train_fn:
-    fn = full_fn.split('\\')[-1]
+    fn = full_fn.split('\\')[-1][:-4] + ".tif"
     shutil.copy(full_fn[:-4] + ".tif", os.path.join(train_dir, fn))
 
 train_dir = '../keras_im_val'
@@ -117,7 +117,7 @@ for full_fn in val_fn:
 train_dir = '../keras_mask_val'
 os.mkdir(train_dir)
 for full_fn in masks_val_fn:
-    fn = full_fn.split('\\')[-1]
+    fn = full_fn.split('\\')[-1][:-4] + ".tif"
     shutil.copy(full_fn[:-4] + ".tif", os.path.join(train_dir, fn))
 
 train_im_path, train_mask_path = '../keras_im_train', '../keras_mask_train'
