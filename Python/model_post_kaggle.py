@@ -191,7 +191,7 @@ class DataGenerator(keras.utils.Sequence):
             mask_path = im_path.replace(self.train_im_path, self.train_mask_path)
 
             # mask = np.array(Image.open(mask_path))
-            mask = np.flip(np.rot90(cv2.imread(mask_path, 0), 3), 1)
+            mask = np.flip(np.rot90(cv2.imread(mask_path[:-4] + ".tif", 0), 3), 1)
             if len(im.shape) == 2:
                 im = np.repeat(im[..., None], 3, 2)
 
